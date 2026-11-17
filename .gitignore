@@ -1,0 +1,9 @@
+# Generated build artifacts. The final PDF, PNG, and preview are committed
+# at each course folder's root.
+*/build/
+.DS_Store
+*.log
+
+# This repository intentionally commits poster deliverables.
+!*.pdf
+!*.png

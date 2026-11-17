@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMPSC 104 — Document Engineering — Spring 2027</title>
+<style>
+/* ============================================================================
+   DOCUMENT ENGINEERING — SPRING 2027 PROMOTIONAL POSTER
+   US Letter, 8.5 x 11 in.  Everything is editable here: colors, type, copy.
+   Build:  ./build.sh      Preview: open this file in a browser.
+   Sections are labelled BLOCK A–F in the HTML below.
+   ========================================================================= */
+
+/* ---------- 1. FONTS (local, so the poster renders offline) ---------- */
+@font-face {
+  font-family: "Bricolage";
+  src: url("assets/fonts/bricolage-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: block;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+
+/* ---------- 2. DESIGN TOKENS ---------- */
+:root {
+  /* Brand palette (from prosegrammers.com) */
+  --plum: #371a45;
+  --plum-deep: #2b1136;
+  --plum-soft: #5d3a74;
+  --violet: #7a4e99;
+  --paper: #f9f7fb;
+  --paper-warm: #fffdf9;
+  --lilac: #e9e0f0;
+  --lilac-line: #d8c9e4;
+
+  /* Accents */
+  --blue: #00aaff;
+  --blue-deep: #0077b6;
+  --gold: #ffc857;
+
+  /* Type */
+  --display: "Bricolage", "Trebuchet MS", sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Ubuntu Mono", "Courier New", monospace;
+}
+
+/* ---------- 3. PAGE ---------- */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #d9d2df;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: var(--body);
+  color: var(--plum);
+}
+.page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+p, h1, h2, h3, h4, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+/* Small reusable bits */
+.mono {
+  font-family: var(--mono);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.kicker {
+  font-family: var(--mono);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.rule {
+  height: 1px;
+  background: var(--lilac-line);
+}
+
+/* ============================================================================
+   BLOCK A — TOP BAR
+   ========================================================================= */
+.topbar {
+  height: 0.40in;
+  background: var(--plum);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.42in;
+  flex: 0 0 0.40in;
+}
+.topbar .left {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lilac);
+}
+.topbar .right {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.topbar .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin: 0 0.07in 0.02in;
+}
+
+/* ============================================================================
+   BLOCK B — HERO
+   ========================================================================= */
+.hero {
+  position: relative;
+  flex: 0 0 3.68in;
+  height: 3.68in;
+  padding: 0.32in 0.42in 0 0.42in;
+  overflow: hidden;
+}
+.hero-copy {
+  position: relative;
+  z-index: 5;
+  width: 5.18in;
+}
+.hero .kicker {
+  color: var(--violet);
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  margin-bottom: 0.10in;
+}
+.hero .kicker .tag {
+  display: inline-block;
+  background: var(--plum);
+  color: var(--paper);
+  padding: 0.045in 0.10in 0.035in;
+  border-radius: 0.03in;
+  font-size: 6.4pt;
+  letter-spacing: 0.16em;
+}
+.hero .kicker .tag .accent { color: var(--blue); }
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 63pt;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  color: var(--plum);
+}
+.hero h1 .line2 {
+  display: block;
+  color: var(--violet);
+}
+.hero .tagline {
+  margin-top: 0.12in;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17pt;
+  letter-spacing: -0.015em;
+  color: var(--plum);
+}
+.hero .tagline em {
+  font-style: normal;
+  color: var(--blue-deep);
+  box-shadow: inset 0 -0.10em 0 rgba(0, 170, 255, 0.28);
+}
+.hero .intro {
+  margin-top: 0.09in;
+  max-width: 4.55in;
+  font-size: 9.2pt;
+  line-height: 1.38;
+  color: #44324f;
+}
+.hero .badges {
+  display: flex;
+  gap: 0.07in;
+  margin-top: 0.11in;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.045in 0.09in 0.035in;
+  border: 1px solid var(--violet);
+  border-radius: 999px;
+  color: var(--violet);
+  background: rgba(255, 255, 255, 0.45);
+}
+.badge.solid {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--plum-deep);
+}
+
+/* --- Hero artwork: plum arch, astronaut, orbit, sticker --- */
+.hero-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.68in;
+  z-index: 1;
+}
+.arch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.66in;
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.10) 0 1.2px, transparent 1.4px) 0 0 / 13px 13px,
+    var(--plum);
+  border-radius: 1.30in 0 0 0.45in;
+}
+.arch::after {
+  content: "";
+  position: absolute;
+  inset: 0.10in;
+  border: 1px solid rgba(249, 247, 251, 0.16);
+  border-radius: 1.22in 0 0 0.38in;
+  pointer-events: none;
+}
+.astronaut {
+  position: absolute;
+  width: 2.16in;
+  height: auto;
+  top: 0.26in;
+  right: 0.20in;
+  z-index: 3;
+  filter: drop-shadow(0 0.07in 0.10in rgba(20, 5, 30, 0.28));
+}
+.orbit {
+  position: absolute;
+  width: 2.65in;
+  height: 0.95in;
+  border: 1.2px dashed rgba(249, 247, 251, 0.34);
+  border-radius: 50%;
+  top: 2.55in;
+  right: -0.05in;
+  transform: rotate(-16deg);
+  z-index: 2;
+}
+.star {
+  position: absolute;
+  z-index: 4;
+  width: 0.16in;
+  height: 0.16in;
+  color: var(--gold);
+}
+.star.s1 { top: 0.38in; left: 0.18in; color: var(--blue); width: 0.12in; height: 0.12in; }
+.star.s2 { top: 1.65in; left: 0.08in; color: var(--gold); width: 0.10in; height: 0.10in; }
+.star.s3 { top: 0.18in; right: 0.16in; color: var(--gold); width: 0.15in; height: 0.15in; }
+.star.s4 { bottom: 0.45in; right: 0.22in; color: var(--blue); width: 0.09in; height: 0.09in; }
+
+.sticker {
+  position: absolute;
+  z-index: 6;
+  top: 2.52in;
+  right: 2.30in;
+  width: 1.04in;
+  height: 1.04in;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--plum-deep);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0.04in 0.09in rgba(30, 10, 40, 0.22);
+  transform: rotate(-9deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 6.8pt;
+  line-height: 1.12;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.sticker strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 16pt;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  margin-bottom: 0.015in;
+}
+
+/* ============================================================================
+   BLOCK C — PIPELINE BAND
+   ========================================================================= */
+.pipeline {
+  flex: 0 0 0.88in;
+  height: 0.88in;
+  background: var(--plum-deep);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  padding: 0 0.42in;
+  gap: 0.20in;
+  position: relative;
+  overflow: hidden;
+}
+.pipeline .pipeline-label {
+  flex: 0 0 1.10in;
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  flex: 1;
+  justify-content: space-between;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.09in;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.step .icon {
+  width: 0.36in;
+  height: 0.36in;
+  flex: 0 0 0.36in;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 200, 87, 0.55);
+  border-radius: 50%;
+}
+.step .icon svg {
+  width: 0.20in;
+  height: 0.20in;
+  display: block;
+}
+.step .label {
+  font-family: var(--mono);
+  font-size: 7.7pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper);
+  line-height: 1.1;
+}
+.step .sub {
+  font-family: var(--body);
+  font-size: 6.3pt;
+  letter-spacing: 0.02em;
+  color: var(--lilac);
+  opacity: 0.8;
+  margin-top: 0.035in;
+  white-space: nowrap;
+}
+.arrow {
+  flex: 0 0 0.16in;
+  width: 0.16in;
+  height: 0.16in;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* ============================================================================
+   BLOCK D — WHAT YOU'LL LEARN
+   ========================================================================= */
+.learn {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.26in 0.42in 0 0.42in;
+  display: flex;
+  flex-direction: column;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.13in;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 19pt;
+  letter-spacing: -0.035em;
+  color: var(--plum);
+}
+.section-head .note {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.17in;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.card {
+  background: var(--paper-warm);
+  border: 1px solid var(--lilac-line);
+  border-radius: 0.10in;
+  padding: 0.17in 0.17in 0.18in;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(55, 26, 69, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.055in;
+  background: var(--card-accent, var(--blue));
+}
+.card .module-tag {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-ink, var(--violet));
+  margin-top: 0.10in;
+}
+.card h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 14pt;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--plum);
+  margin-top: 0.03in;
+  max-width: 2.0in;
+  text-transform: uppercase;
+}
+.card .promise {
+  font-size: 8.6pt;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--violet);
+  margin-top: 0.07in;
+  margin-bottom: 0.12in;
+}
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.055in;
+}
+.card li {
+  font-size: 8.2pt;
+  line-height: 1.3;
+  color: #44324f;
+  padding-left: 0.12in;
+  position: relative;
+}
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.06in;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--blue));
+}
+.card .critique {
+  margin-top: auto;
+  padding-top: 0.09in;
+  border-top: 1px dashed var(--lilac-line);
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--violet);
+  line-height: 1.3;
+}
+.card .critique b {
+  color: var(--plum);
+  font-weight: 700;
+}
+.also {
+  margin-top: 0.09in;
+  padding-top: 0.06in;
+  border-top: 1px solid var(--lilac-line);
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b5879;
+  line-height: 1.35;
+}
+.also b {
+  color: var(--violet);
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================================
+   BLOCK E — TOOLKIT
+   ========================================================================= */
+.toolkit {
+  flex: 0 0 0.90in;
+  height: 0.90in;
+  background: var(--lilac);
+  border-top: 1px solid var(--lilac-line);
+  border-bottom: 1px solid var(--lilac-line);
+  padding: 0.09in 0.42in;
+  display: flex;
+  align-items: center;
+  gap: 0.22in;
+}
+.toolkit .label {
+  flex: 0 0 0.90in;
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+.toolkit .label b {
+  display: block;
+  color: var(--plum);
+  font-weight: 700;
+}
+.chip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.055in;
+}
+.chip-row {
+  display: flex;
+  gap: 0.05in;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--plum);
+  background: var(--paper);
+  border: 1px solid rgba(122, 78, 153, 0.30);
+  border-radius: 0.025in;
+  padding: 0.035in 0.065in 0.028in;
+  white-space: nowrap;
+}
+.chip.hot {
+  background: var(--plum);
+  border-color: var(--plum);
+  color: var(--paper);
+}
+.chip.hot::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-right: 0.035in;
+  vertical-align: 0.02in;
+}
+
+/* ============================================================================
+   BLOCK F — SCHEDULE / CTA FOOTER
+   ========================================================================= */
+.footer {
+  flex: 0 0 2.00in;
+  height: 2.00in;
+  background: var(--plum);
+  color: var(--paper);
+  padding: 0.26in 0.42in 0.26in;
+  display: grid;
+  grid-template-columns: 4.19in 1.36in 1.77in;
+  gap: 0.17in;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.045in;
+  background: var(--gold);
+}
+.footer .label {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.footer .dates {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13pt;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  margin-top: 0.04in;
+  color: var(--paper);
+}
+.schedule-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.schedule {
+  margin-top: 0.12in;
+  display: grid;
+  grid-template-columns: 0.40in 1.02in 1.10in 1.55in;
+  row-gap: 0.07in;
+  align-items: baseline;
+}
+.schedule .tag {
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.10em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+.schedule .day {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: var(--paper);
+}
+.schedule .time {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 10.5pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .room {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.06em;
+  color: var(--lilac);
+  text-transform: uppercase;
+}
+.schedule .row-label {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.12em;
+  color: var(--lilac);
+  text-transform: uppercase;
+}
+.quick-facts {
+  margin-top: 0.16in;
+  padding-top: 0.09in;
+  border-top: 1px solid rgba(249, 247, 251, 0.18);
+  font-family: var(--mono);
+  font-size: 6.3pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1.3;
+}
+.instructor {
+  margin-top: auto;
+  font-size: 7.1pt;
+  line-height: 1.4;
+  color: var(--lilac);
+}
+.instructor b {
+  color: var(--paper);
+  font-weight: 600;
+}
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.06in;
+}
+.qr {
+  width: 1.02in;
+  height: 1.02in;
+  background: var(--paper);
+  padding: 0.05in;
+  border-radius: 0.05in;
+  box-shadow: 0 0.03in 0.08in rgba(20, 5, 30, 0.25);
+}
+.qr img { width: 100%; height: 100%; display: block; }
+.qr-block .scan {
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--lilac);
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cta .become {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.cta .wordmark {
+  width: 1.56in;
+  height: auto;
+  margin: 0.05in 0 0.07in;
+  display: block;
+}
+.cta .url {
+  font-family: var(--mono);
+  font-size: 7.4pt;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 170, 255, 0.45);
+  padding-bottom: 0.015in;
+}
+.cta .url:hover { color: var(--gold); }
+
+/* Slight print nicety */
+.page, .topbar, .pipeline, .footer, .arch, .sticker, .chip, .card {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ======================================================================
+       BLOCK A — TOP BAR
+       =================================================================== -->
+  <header class="topbar">
+    <div class="left">Allegheny College <span class="dot"></span> Computer &amp; Information Science</div>
+    <div class="right">Spring 2027</div>
+  </header>
+
+  <!-- ======================================================================
+       BLOCK B — HERO: course title, pitch, astronaut, no-prereq sticker
+       =================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <div class="kicker">
+        <span class="tag">CMPSC&nbsp;<span class="accent">104</span></span>
+        <span>A Prosegrammers course</span>
+      </div>
+
+      <h1>
+        <span class="line1">DOCUMENT</span>
+        <span class="line2">ENGINEERING</span>
+      </h1>
+
+      <p class="tagline">Where <em>prose</em> meets <em>programming</em>.</p>
+
+      <p class="intro">
+        Learn to write with code: build, automate, and publish the documentation
+        that makes software understandable. Work with Python, Quarto, Git, and
+        AI coding agents — and leave with a portfolio of real document
+        engineering projects.
+      </p>
+
+      <div class="badges">
+        <span class="badge solid">4 credits</span>
+        <span class="badge">HE + SP</span>
+        <span class="badge">Project-based</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="arch"></div>
+      <div class="orbit"></div>
+      <img class="astronaut" src="assets/astronaut.svg" alt="">
+      <svg class="star s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 14.4 9.6 24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4Z" fill="currentColor"/></svg>
+      <svg class="star s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 14.4 9.6 24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4Z" fill="currentColor"/></svg>
+      <svg class="star s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 14.4 9.6 24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4Z" fill="currentColor"/></svg>
+      <svg class="star s4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 14.4 9.6 24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4Z" fill="currentColor"/></svg>
+      <div class="sticker">
+        <strong>NO</strong>
+        prerequisite
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK C — THE DOCUMENT PIPELINE
+       =================================================================== -->
+  <section class="pipeline" id="pipeline">
+    <div class="pipeline-label">
+      The document<br>pipeline
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+            <path d="M14 3v6h6"/>
+            <path d="M8 13h8M8 17h5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Write</div>
+          <div class="sub">Markdown + Python</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/>
+            <path d="M6 7v10M8 7c4 0 8 1 8 4s-4 4-8 4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Version</div>
+          <div class="sub">Git + GitHub</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l8 4.5-8 4.5-8-4.5z"/>
+            <path d="M4 12l8 4.5 8-4.5"/>
+            <path d="M4 16.5L12 21l8-4.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Build</div>
+          <div class="sub">Quarto + RevealJS</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18M12 3c2.5 2.5 3.7 5.6 3.7 9S14.5 18.5 12 21c-2.5-2.5-3.7-5.6-3.7-9S9.5 5.5 12 3z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Publish</div>
+          <div class="sub">Web + PDF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK D — WHAT YOU'LL LEARN: three module cards
+       =================================================================== -->
+  <section class="learn" id="learn">
+    <div class="section-head">
+      <h2>What you’ll learn</h2>
+      <div class="note">Three modules · 12 demos · 3 projects</div>
+    </div>
+
+    <div class="cards">
+      <!-- Card 1 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--blue); --card-ink: #0077b6">
+        <div class="module-tag">Module 01</div>
+        <h3>Foundations</h3>
+        <p class="promise">Write it. Version it. Publish it.</p>
+        <ul>
+          <li>Python fundamentals</li>
+          <li>Git, GitHub &amp; GitHub Flow</li>
+          <li>Quarto + Markdown</li>
+          <li>Docs-as-code workflow</li>
+        </ul>
+        <div class="critique"><b>Critique</b> · uv &amp; Quarto</div>
+      </article>
+
+      <!-- Card 2 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--gold); --card-ink: #956200">
+        <div class="module-tag">Module 02</div>
+        <h3>Building Blocks</h3>
+        <p class="promise">Automate the boring parts.</p>
+        <ul>
+          <li>Intermediate Python</li>
+          <li>AI coding agents</li>
+          <li>Literate programming</li>
+          <li>Localization</li>
+        </ul>
+        <div class="critique"><b>Critique</b> · ruff &amp; Django</div>
+      </article>
+
+      <!-- Card 3 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--violet); --card-ink: var(--violet)">
+        <div class="module-tag">Module 03</div>
+        <h3>Advanced</h3>
+        <p class="promise">Build tools that read.</p>
+        <ul>
+          <li>Advanced Python</li>
+          <li>Context engineering</li>
+          <li>FastAPI + RAG</li>
+          <li>Zettelkasten &amp; digital gardens</li>
+        </ul>
+        <div class="critique"><b>Critique</b> · ty &amp; FastAPI</div>
+      </article>
+    </div>
+
+    <p class="also">
+      <b>Also on the syllabus</b> · Diataxis · README-driven dev · localization ·
+      Zettelkasten · digital gardens · NLP · regex · search · RAG
+    </p>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK E — TOOLKIT
+       =================================================================== -->
+  <section class="toolkit" id="toolkit">
+    <div class="label"><b>Your</b> toolkit</div>
+    <div class="chip-rows">
+      <div class="chip-row">
+        <span class="chip">Python</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+        <span class="chip">Quarto</span>
+        <span class="chip">Markdown</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">RevealJS</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">Django</span>
+        <span class="chip hot">GitHub Copilot</span>
+        <span class="chip hot">Pi Coding Agent</span>
+        <span class="chip hot">OpenCode</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK F — SPRING 2027 SCHEDULE + CTA
+       =================================================================== -->
+  <footer class="footer" id="schedule">
+    <div class="schedule-block">
+      <div class="label">Spring 2027 · Main Campus</div>
+      <div class="dates">January 19 — May 11, 2027</div>
+
+      <div class="schedule">
+        <span class="tag">Class</span>
+        <span class="day">T / Th</span>
+        <span class="time">9:30 – 10:45 AM</span>
+        <span class="room">Alden Hall, 109 Lecture</span>
+
+        <span class="tag">Lab</span>
+        <span class="day">Tuesday</span>
+        <span class="time">2:30 – 4:00 PM</span>
+        <span class="room">Alden Hall, 109 Lab</span>
+      </div>
+
+      <div class="quick-facts">Project-based · team presentations · portfolio</div>
+
+      <div class="instructor">
+        <b>Dr. Gregory M. Kapfhammer</b><br>
+        Department of Computer and Information Science · Allegheny College
+      </div>
+    </div>
+
+    <div class="qr-block">
+      <div class="qr"><img src="assets/qr-prosegrammers.svg" alt="QR code for prosegrammers.com"></div>
+      <div class="scan">Scan to explore</div>
+    </div>
+
+    <div class="cta">
+      <div class="become">Become a</div>
+      <img class="wordmark" src="assets/wordmark-light.svg" alt="Prosegrammers">
+      <a class="url" href="https://prosegrammers.com/">prosegrammers.com</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
