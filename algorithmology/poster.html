@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMPSC 202 — Algorithm Analysis — Spring 2025</title>
+<style>
+/* ============================================================================
+   ALGORITHMOLOGY / CMPSC 202 — SPRING 2025 PROMOTIONAL POSTER
+   US Letter, 8.5 x 11 in. Everything is editable here: colors, type, copy.
+   Build: ./build.sh      Preview: open this file in a browser.
+   Sections are labelled BLOCK A–F in the HTML below.
+   ========================================================================= */
+
+/* ---------- 1. FONTS (local, so the poster renders offline) ---------- */
+@font-face {
+  font-family: "Archivo";
+  src: url("assets/fonts/archivo-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+
+/* ---------- 2. DESIGN TOKENS ---------- */
+:root {
+  /* Algorithmology palette, drawn from the course site (#3459e6 navbar,
+     #fdfdff paper) and the course logo (blue tile, coral band, navy ink). */
+  --ink: #16203c;
+  --ink-deep: #0e1526;
+  --navy: #222c4a;
+  --blue: #3459e6;
+  --blue-deep: #2a48c8;
+  --blue-soft: #6b87f0;
+  --coral: #ff6741;
+  --coral-deep: #d93d1c;
+  --amber: #ffb04a;
+  --amber-ink: #a35c00;
+  --paper: #fdfdff;
+  --paper-warm: #ffffff;
+  --lavender: #e9edfd;
+  --line: #cfd8f8;
+  --sky: #aebef8;
+
+  /* Type */
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Ubuntu Mono", "Courier New", monospace;
+}
+
+/* ---------- 3. PAGE ---------- */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #d5daea;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: var(--body);
+  color: var(--ink);
+}
+.page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+p, h1, h2, h3, h4, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+   BLOCK A — TOP BAR
+   ========================================================================= */
+.topbar {
+  height: 0.38in;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.42in;
+  flex: 0 0 0.38in;
+}
+.topbar .left {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+.topbar .right {
+  font-family: var(--mono);
+  font-size: 8.1pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper);
+  border: 1px solid rgba(255, 103, 65, 0.9);
+  background: var(--coral);
+  padding: 0.045in 0.11in 0.035in;
+  border-radius: 999px;
+  line-height: 1;
+}
+.topbar .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--coral);
+  margin: 0 0.07in 0.02in;
+}
+
+/* ============================================================================
+   BLOCK B — HERO
+   ========================================================================= */
+.hero {
+  position: relative;
+  flex: 0 0 3.78in;
+  height: 3.78in;
+  padding: 0.30in 0.42in 0 0.42in;
+  overflow: hidden;
+}
+.hero-copy {
+  position: relative;
+  z-index: 5;
+  width: 4.92in;
+}
+.hero .kicker {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 0.09in;
+  margin-bottom: 0.10in;
+}
+.hero .kicker .tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.045in 0.10in 0.035in;
+  border-radius: 0.03in;
+  font-size: 6.4pt;
+  letter-spacing: 0.16em;
+}
+.hero .kicker .tag .accent { color: var(--coral); }
+.hero .kicker-term {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 7.2pt;
+  letter-spacing: 0.14em;
+}
+.hero .kicker-note {
+  color: var(--blue);
+  font-size: 6.5pt;
+  letter-spacing: 0.15em;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 55pt;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+.hero h1 .line2 {
+  display: block;
+  color: var(--blue);
+}
+.hero .tagline {
+  margin-top: 0.11in;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17pt;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.hero .tagline em {
+  font-style: normal;
+  color: var(--coral-deep);
+  box-shadow: inset 0 -0.09em 0 rgba(255, 103, 65, 0.20);
+}
+.hero .intro {
+  margin-top: 0.09in;
+  max-width: 4.46in;
+  font-size: 9.15pt;
+  line-height: 1.36;
+  color: #2f3a5c;
+}
+.hero .badges {
+  display: flex;
+  gap: 0.06in;
+  margin-top: 0.11in;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.045in 0.08in 0.035in;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  color: var(--blue);
+  background: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+.badge.solid {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* --- Hero artwork: blue arch, graph circle, microscope, coral band --- */
+.hero-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.78in;
+  z-index: 1;
+}
+.arch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.72in;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px) 0 0 / 0.14in 0.14in,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px) 0 0 / 0.14in 0.14in,
+    linear-gradient(165deg, #3f62ea 0%, var(--blue) 45%, var(--blue-deep) 100%);
+  border-radius: 1.30in 0 0 0.30in;
+}
+.arch::after {
+  content: "";
+  position: absolute;
+  inset: 0.10in;
+  border: 1px solid rgba(253, 253, 255, 0.20);
+  border-radius: 1.22in 0 0 0.24in;
+  pointer-events: none;
+}
+.paper-circle {
+  position: absolute;
+  top: 0.26in;
+  right: 0.17in;
+  width: 2.36in;
+  height: 2.36in;
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(22, 32, 60, 0.08) 1px, transparent 1px) 0 0 / 0.10in 0.10in,
+    linear-gradient(90deg, rgba(22, 32, 60, 0.08) 1px, transparent 1px) 0 0 / 0.10in 0.10in,
+    var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 0 0 0.05in rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+.microscope {
+  position: absolute;
+  width: 1.92in;
+  height: auto;
+  top: 0.34in;
+  right: 0.36in;
+  z-index: 3;
+  filter: drop-shadow(0 0.06in 0.08in rgba(10, 20, 50, 0.28));
+}
+.brand-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.50in;
+  background: linear-gradient(90deg, #ff4637 0%, var(--coral) 46%, #ff8e4c 100%);
+  border-radius: 0 0 0 0.30in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  box-shadow: 0 -0.02in 0.06in rgba(10, 20, 50, 0.18);
+}
+.brand-band span {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 9.6pt;
+  letter-spacing: 0.19em;
+  text-indent: 0.19em;
+  color: var(--paper);
+  text-transform: uppercase;
+}
+
+.sticker {
+  position: absolute;
+  z-index: 6;
+  top: 2.62in;
+  right: 2.22in;
+  width: 1.00in;
+  height: 1.00in;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--paper);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0.04in 0.09in rgba(10, 20, 50, 0.26);
+  transform: rotate(-8deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  line-height: 1.05;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.sticker strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15pt;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  margin-bottom: 0.03in;
+}
+.complexity-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 0.10in;
+  right: 0.12in;
+  padding: 0.035in 0.075in 0.028in;
+  border: 1px solid rgba(253, 253, 255, 0.7);
+  color: var(--paper);
+  background: rgba(14, 21, 38, 0.28);
+  font-family: var(--mono);
+  font-size: 6.3pt;
+  letter-spacing: 0.06em;
+  transform: rotate(5deg);
+}
+
+/* ============================================================================
+   BLOCK C — PIPELINE BAND
+   ========================================================================= */
+.pipeline {
+  flex: 0 0 0.84in;
+  height: 0.84in;
+  background: var(--blue);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  padding: 0 0.42in;
+  gap: 0.12in;
+  position: relative;
+  overflow: hidden;
+}
+.pipeline .pipeline-label {
+  flex: 0 0 0.82in;
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  line-height: 1.4;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  flex: 1;
+  justify-content: space-between;
+}
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.085in;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.step .icon {
+  width: 0.35in;
+  height: 0.35in;
+  flex: 0 0 0.35in;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(253, 253, 255, 0.55);
+  border-radius: 50%;
+}
+.step .icon svg {
+  width: 0.19in;
+  height: 0.19in;
+  display: block;
+}
+.step .label {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper);
+  line-height: 1.1;
+}
+.step .sub {
+  font-family: var(--body);
+  font-size: 6.2pt;
+  letter-spacing: 0.01em;
+  color: rgba(253, 253, 255, 0.82);
+  margin-top: 0.035in;
+  white-space: nowrap;
+}
+.arrow {
+  flex: 0 0 0.15in;
+  width: 0.15in;
+  height: 0.15in;
+  color: rgba(253, 253, 255, 0.75);
+}
+
+/* ============================================================================
+   BLOCK D — WHAT YOU'LL LEARN
+   ========================================================================= */
+.learn {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.24in 0.42in 0 0.42in;
+  display: flex;
+  flex-direction: column;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.12in;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18.5pt;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.section-head .note {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.16in;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.card {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 0.10in;
+  padding: 0.14in 0.15in 0.13in;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(22, 32, 60, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.055in;
+  background: var(--card-accent, var(--blue));
+}
+.card .module-tag {
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-ink, var(--blue));
+  margin-top: 0.08in;
+}
+.card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13.5pt;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-top: 0.02in;
+  max-width: 2.0in;
+  min-height: 0.375in;
+  text-transform: uppercase;
+}
+.card .promise {
+  font-size: 8.5pt;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #3d4a70;
+  margin-top: 0.06in;
+  margin-bottom: 0.09in;
+}
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.042in;
+}
+.card li {
+  font-size: 8.1pt;
+  line-height: 1.27;
+  color: #2f3a5c;
+  padding-left: 0.12in;
+  position: relative;
+}
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.055in;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--blue));
+}
+.card .critique {
+  margin-top: auto;
+  padding-top: 0.09in;
+  border-top: 1px dashed var(--line);
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #55628a;
+  line-height: 1.3;
+}
+.card .critique b {
+  color: var(--card-ink, var(--blue));
+  font-weight: 700;
+}
+.also {
+  margin-top: 0.085in;
+  margin-bottom: 0.045in;
+  padding-top: 0.055in;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #4e5a7c;
+  line-height: 1.35;
+}
+.also b {
+  color: var(--blue);
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================================
+   BLOCK E — TOOLKIT
+   ========================================================================= */
+.toolkit {
+  flex: 0 0 0.84in;
+  height: 0.84in;
+  background: var(--lavender);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.09in 0.42in;
+  display: flex;
+  align-items: center;
+  gap: 0.20in;
+}
+.toolkit .label {
+  flex: 0 0 0.78in;
+  font-family: var(--mono);
+  font-size: 6.4pt;
+  line-height: 1.35;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.toolkit .label b {
+  display: block;
+  color: var(--ink);
+  font-weight: 700;
+}
+.chip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.055in;
+}
+.toolkit .note {
+  margin-left: auto;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  line-height: 1.4;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.toolkit .note b {
+  display: block;
+  color: var(--ink);
+  font-weight: 700;
+}
+.chip-row {
+  display: flex;
+  gap: 0.05in;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 6.4pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(52, 89, 230, 0.28);
+  border-radius: 0.025in;
+  padding: 0.038in 0.075in 0.030in;
+  white-space: nowrap;
+}
+.chip.hot {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.chip.hot::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--coral);
+  margin-right: 0.035in;
+  vertical-align: 0.02in;
+}
+
+/* ============================================================================
+   BLOCK F — SCHEDULE / CTA FOOTER
+   ========================================================================= */
+.footer {
+  flex: 0 0 2.26in;
+  height: 2.26in;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.21in 0.42in 0.19in;
+  display: grid;
+  grid-template-columns: 4.28in 1.30in 1.72in;
+  gap: 0.18in;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.045in;
+  background: linear-gradient(90deg, var(--coral) 0%, #ff8e4c 55%, var(--amber) 100%);
+}
+.schedule-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.footer .label {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+.footer .label .term {
+  color: var(--paper);
+  font-weight: 700;
+}
+.footer .dates {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12.4pt;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  margin-top: 0.035in;
+  color: var(--paper);
+}
+.schedule {
+  margin-top: 0.085in;
+  display: grid;
+  grid-template-columns: 0.60in 1.28in 1.30in 0.96in;
+  row-gap: 0.045in;
+  column-gap: 0.05in;
+  align-items: baseline;
+}
+.schedule .tag {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.09em;
+  color: var(--coral);
+  text-transform: uppercase;
+}
+.schedule .day {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 9.2pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .time {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 9.2pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .time.tba {
+  font-family: var(--mono);
+  font-size: 6.4pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+.schedule .room {
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.05em;
+  color: var(--sky);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.quick-facts {
+  margin-top: 0.08in;
+  padding-top: 0.07in;
+  border-top: 1px solid rgba(253, 253, 255, 0.18);
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--amber);
+  line-height: 1.3;
+}
+.instructor {
+  margin-top: auto;
+  font-size: 7.0pt;
+  line-height: 1.35;
+  color: var(--sky);
+}
+.instructor b {
+  color: var(--paper);
+  font-weight: 600;
+}
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.055in;
+}
+.qr {
+  width: 1.00in;
+  height: 1.00in;
+  background: var(--paper);
+  padding: 0.05in;
+  border-radius: 0.05in;
+  box-shadow: 0 0.03in 0.08in rgba(5, 10, 25, 0.35);
+}
+.qr img { width: 100%; height: 100%; display: block; }
+.qr-block .scan {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky);
+  line-height: 1.35;
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cta .become {
+  font-family: var(--mono);
+  font-size: 6.8pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.wordmark {
+  margin-top: 0.055in;
+  padding-bottom: 0.045in;
+  border-bottom: 2px solid var(--coral);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 9.6pt;
+  line-height: 1;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.wordmark .ology { color: var(--coral); }
+.cta .url {
+  margin-top: 0.065in;
+  font-family: var(--mono);
+  font-size: 7.2pt;
+  letter-spacing: 0.03em;
+  color: var(--sky);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(174, 190, 248, 0.5);
+  padding-bottom: 0.015in;
+}
+.cta .url:hover { color: var(--paper); }
+
+/* Slight print nicety */
+.page, .topbar, .pipeline, .footer, .arch, .sticker, .chip, .card,
+.brand-band, .paper-circle, .complexity-stamp {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ======================================================================
+       BLOCK A — TOP BAR
+       =================================================================== -->
+  <header class="topbar">
+    <div class="left">Allegheny College <span class="dot"></span> Computer &amp; Information Science</div>
+    <div class="right">Spring 2025</div>
+  </header>
+
+  <!-- ======================================================================
+       BLOCK B — HERO: course title, pitch, microscope, complexity stamps
+       =================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <div class="kicker">
+        <span class="tag">CMPSC&nbsp;<span class="accent">202</span></span>
+        <span class="kicker-term">Spring 2025</span>
+        <span class="kicker-note">An Algorithmology course</span>
+      </div>
+
+      <h1>
+        <span class="line1">ALGORITHM</span>
+        <span class="line2">ANALYSIS</span>
+      </h1>
+
+      <p class="tagline">Where <em>theory</em> meets <em>timing</em>.</p>
+
+      <p class="intro">
+        Measure what software really costs. Prove the worst-case growth of
+        algorithms, then benchmark data structures and Python programs with
+        reproducible doubling experiments. Build hash tables, trees, queues, and
+        graphs; run projects, skill-checks, and team all-hands studies; and gain
+        the career-ready skills of a practicing algorithm engineer.
+      </p>
+
+      <div class="badges">
+        <span class="badge solid">4 credits</span>
+        <span class="badge">QR + SP</span>
+        <span class="badge">Prereq: CMPSC 101</span>
+        <span class="badge">Experiments</span>
+        <span class="badge">CS core</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="arch"></div>
+      <div class="paper-circle"></div>
+      <img class="microscope" src="assets/microscope.png" alt="">
+      <div class="brand-band"><span>Algorithmology</span></div>
+      <div class="complexity-stamp">O(<i>n</i> log <i>n</i>)</div>
+      <div class="sticker">
+        <strong>CS</strong>
+        core<br>course
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK C — THE ANALYSIS PIPELINE
+       =================================================================== -->
+  <section class="pipeline" id="pipeline">
+    <div class="pipeline-label">
+      The analysis<br>pipeline
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fdfdff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 4H5v16h3M16 4h3v16h-3"/>
+            <path d="M10 9h4M10 13h4M10 17h2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Implement</div>
+          <div class="sub">Data structures</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fdfdff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20V4M3 20h18"/>
+            <path d="M6 16c3-1 4.5-4 6-8 1.2-3 3-4 5-4"/>
+            <path d="M17 4h3v3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Analyze</div>
+          <div class="sub">Big-O &amp; proofs</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fdfdff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20V10M9 20V6M14 20V13M19 20V3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Benchmark</div>
+          <div class="sub">Doubling experiments</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fdfdff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18M6 7h8a3 3 0 0 1 0 6H6M18 17H9a3 3 0 0 1 0-6h9"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Decide</div>
+          <div class="sub">Correct + fast</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK D — WHAT YOU'LL LEARN: 3 module cards
+       =================================================================== -->
+  <section class="learn" id="learn">
+    <div class="section-head">
+      <h2>What you’ll learn</h2>
+      <div class="note">3 modules · 21 chapters · 3 projects</div>
+    </div>
+
+    <div class="cards">
+      <!-- Card 1 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--coral); --card-ink: var(--coral-deep)">
+        <div class="module-tag">Module 01 · Weeks 1–6</div>
+        <h3>Analysis Foundations</h3>
+        <p class="promise">Measure cost; prove growth.</p>
+        <ul>
+          <li>Python &amp; OOP review</li>
+          <li>Testing for correctness</li>
+          <li>Empirical runtime trials</li>
+          <li>Asymptotic &amp; worst-case analysis</li>
+        </ul>
+        <div class="critique"><b>Code</b> · time duplicates() at doubling sizes</div>
+      </article>
+
+      <!-- Card 2 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--blue); --card-ink: var(--blue)">
+        <div class="module-tag">Module 02 · Weeks 7–11</div>
+        <h3>Building Blocks</h3>
+        <p class="promise">Pick the structure the data needs.</p>
+        <ul>
+          <li>Stacks, queues, deques</li>
+          <li>Linked &amp; doubly linked lists</li>
+          <li>Recursion &amp; dynamic programming</li>
+          <li>Searching &amp; sorting</li>
+        </ul>
+        <div class="critique"><b>Build</b> · a library of abstract data types</div>
+      </article>
+
+      <!-- Card 3 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: #f0a128; --card-ink: var(--amber-ink)">
+        <div class="module-tag">Module 03 · Weeks 12–16</div>
+        <h3>Advanced Structures</h3>
+        <p class="promise">Scale search, priority, and data.</p>
+        <ul>
+          <li>Hash tables</li>
+          <li>Trees, heaps, and priority queues</li>
+          <li>Graph structures</li>
+          <li>Trade-offs at scale</li>
+        </ul>
+        <div class="critique"><b>Benchmark</b> · hashing vs. sorting in Python</div>
+      </article>
+    </div>
+
+    <p class="also">
+      <b>Textbook</b> · A First Course on Data Structures in Python (Sheehy) ·
+      ds2 · pytest · executable midterms &amp; final · skill-checks ·
+      all-hands reports
+    </p>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK E — TOOLKIT
+       =================================================================== -->
+  <section class="toolkit" id="toolkit">
+    <div class="label"><b>Your</b> toolkit</div>
+    <div class="chip-rows">
+      <div class="chip-row">
+        <span class="chip">Python</span>
+        <span class="chip">ds2</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+        <span class="chip">pytest</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">Quarto</span>
+        <span class="chip">Discord</span>
+        <span class="chip">uv</span>
+        <span class="chip hot">GitHub Copilot</span>
+        <span class="chip hot">Pi Coding Agent</span>
+        <span class="chip hot">OpenCode</span>
+      </div>
+    </div>
+    <div class="note"><b>AI assistants welcome</b>Cite what you use</div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK F — SPRING 2025 SCHEDULE + CTA
+       =================================================================== -->
+  <footer class="footer" id="schedule">
+    <div class="schedule-block">
+      <div class="label"><span class="term">Spring 2025</span> · Main Campus</div>
+      <div class="dates">January 13 — May 2, 2025</div>
+
+      <div class="schedule">
+        <span class="tag">Class</span>
+        <span class="day">T / Th</span>
+        <span class="time tba">time TBA</span>
+        <span class="room">Alden Hall</span>
+
+        <span class="tag">Lab</span>
+        <span class="day">Friday</span>
+        <span class="time">2:30 – 4:00 PM</span>
+        <span class="room">Alden 109</span>
+
+        <span class="tag">Midterms</span>
+        <span class="day">Feb 28 · Apr 4</span>
+        <span class="time">2:30 – 4:00 PM</span>
+        <span class="room">Alden 109</span>
+
+        <span class="tag">Final</span>
+        <span class="day">Fri, May 2</span>
+        <span class="time">9:00 AM – 12:00 PM</span>
+        <span class="room">Alden 109</span>
+      </div>
+
+      <div class="quick-facts">CS core · analysis + experiments · all-hands projects</div>
+
+      <div class="instructor">
+        <b>Dr. Gregory M. Kapfhammer</b> · Department of Computer and Information Science<br>
+        Allegheny College
+      </div>
+    </div>
+
+    <div class="qr-block">
+      <div class="qr"><img src="assets/qr-algorithmology.svg" alt="QR code for algorithmology.org"></div>
+      <div class="scan">Scan for the<br>syllabus</div>
+    </div>
+
+    <div class="cta">
+      <div class="become">Become one of the</div>
+      <div class="wordmark">Algorithm<span class="ology">ologists</span></div>
+      <a class="url" href="https://algorithmology.org/">algorithmology.org</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
