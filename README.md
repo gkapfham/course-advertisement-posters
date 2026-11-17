@@ -7,13 +7,16 @@ Each poster is a self-contained HTML/CSS document rendered to a US Letter PDF
 and a 300 DPI PNG. The HTML is the editable source; the PDF and PNG are
 committed so a poster can be printed or shared immediately.
 
-![CMPSC 104 — Document Engineering, Spring 2027](document-engineering/preview.png)
+| Document Engineering | Theoretical Machines |
+| --- | --- |
+| ![CMPSC 104 — Document Engineering, Spring 2027](document-engineering/preview.png) | ![CMPSC 204 — Theoretical Machines, Fall 2025](proofgrammers/preview.png) |
 
 ## Posters
 
 | Course | Term | Deliverables | Source |
 | --- | --- | --- | --- |
 | **CMPSC 104 — Document Engineering** | Spring 2027 | [PDF](document-engineering/CMPSC104-Document-Engineering-Spring2027.pdf) · [PNG](document-engineering/CMPSC104-Document-Engineering-Spring2027.png) | [document-engineering/](document-engineering/) |
+| **CMPSC 204 — Theoretical Machines** | Fall 2025 | [PDF](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.pdf) · [PNG](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.png) | [proofgrammers/](proofgrammers/) |
 
 ## Repository layout
 
@@ -22,21 +25,22 @@ course-advertisement-posters/
 ├── README.md
 ├── AGENTS.md
 ├── .gitignore
-└── document-engineering/
+├── document-engineering/
+│   ├── README.md
+│   ├── poster.html
+│   ├── build.sh
+│   ├── CMPSC104-Document-Engineering-Spring2027.pdf
+│   ├── CMPSC104-Document-Engineering-Spring2027.png
+│   ├── preview.png
+│   └── assets/
+└── proofgrammers/
     ├── README.md
     ├── poster.html
     ├── build.sh
-    ├── CMPSC104-Document-Engineering-Spring2027.pdf
-    ├── CMPSC104-Document-Engineering-Spring2027.png
+    ├── CMPSC204-Theoretical-Machines-Fall2025.pdf
+    ├── CMPSC204-Theoretical-Machines-Fall2025.png
     ├── preview.png
     └── assets/
-        ├── astronaut.svg
-        ├── prosegrammers-logo.svg
-        ├── wordmark.svg
-        ├── wordmark-light.svg
-        ├── qr-prosegrammers.svg
-        ├── qr-prosegrammers.png
-        └── fonts/
 ```
 
 **Agent instructions:** read [AGENTS.md](AGENTS.md) before editing a poster,
@@ -48,17 +52,15 @@ remains reproducible.
 
 ## Design system
 
-The posters share a small, reusable visual language:
+The series shares a reusable structure: US Letter portrait, blocks A–F, a
+full-bleed dark footer, Inter for body copy, Ubuntu Mono for labels, and a
+committed PDF/PNG pair. Each course chooses its own display face and palette:
 
-| Token | Value | Use |
+| Course | Display | Palette |
 | --- | --- | --- |
-| Plum | `#371a45` | Primary brand color, dark bands |
-| Violet | `#7a4e99` | Secondary headlines, accents |
-| Paper | `#f9f7fb` | Page background |
-| Blue | `#00aaff` | Highlights, links, small accents |
-| Gold | `#ffc857` | Stickers, rules, callouts |
+| Document Engineering | Bricolage Grotesque | Plum `#371a45`, violet `#7a4e99`, blue `#00aaff`, gold `#ffc857` |
+| Theoretical Machines | Space Grotesk | Aubergine `#3b1b52`, mauve `#7e5186`, orchid `#c85a9e`, ivory `#f4e6b8` |
 
-- **Display:** Bricolage Grotesque
 - **Body:** Inter
 - **Labels / code:** Ubuntu Mono
 - **Format:** US Letter portrait, 8.5 × 11 in
@@ -73,6 +75,7 @@ Each course folder has its own `build.sh`:
 
 ```bash
 ./document-engineering/build.sh
+./proofgrammers/build.sh
 ```
 
 The script uses headless Chromium and `pdftoppm`. It writes intermediates to
@@ -87,6 +90,7 @@ course folder root.
 
    ```bash
    cp -r document-engineering new-course-name
+   # or: cp -r proofgrammers new-course-name
    ```
 
 2. Rename the PDF and PNG to match the new course and term.
@@ -98,11 +102,13 @@ course folder root.
 
 ## Assets and licensing
 
-- The poster fonts are open-source: Bricolage Grotesque and Inter under the SIL
-  Open Font License 1.1, and Ubuntu Mono under the Ubuntu Font Licence 1.0.
-  License links live in `document-engineering/assets/fonts/README.md`.
+- The poster fonts are open-source: Bricolage Grotesque, Space Grotesk, and
+  Inter under the SIL Open Font License 1.1, and Ubuntu Mono under the Ubuntu
+  Font Licence 1.0. License links live in each course’s
+  `assets/fonts/README.md`.
 - The astronaut and Prosegrammers wordmark are course branding taken from the
-  Prosegrammers course logo.
+  Prosegrammers course logo. The elephant and Proofgrammers wordmark are course
+  branding taken from the Proofgrammers course logo.
 - QR codes are generated with [Segno](https://segno.readthedocs.io/).
 - No repository-wide license has been added yet; add one before accepting
   outside reuse.

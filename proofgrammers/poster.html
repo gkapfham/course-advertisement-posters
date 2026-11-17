@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMPSC 204 — Theoretical Machines — Fall 2025</title>
+<style>
+/* ============================================================================
+   THEORETICAL MACHINES / PROOFGRAMMERS — FALL 2025 PROMOTIONAL POSTER
+   US Letter, 8.5 x 11 in.  Everything is editable here: colors, type, copy.
+   Build:  ./build.sh      Preview: open this file in a browser.
+   Sections are labelled BLOCK A–F in the HTML below.
+   ========================================================================= */
+
+/* ---------- 1. FONTS (local, so the poster renders offline) ---------- */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("assets/fonts/space-grotesk-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: block;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+
+/* ---------- 2. DESIGN TOKENS ---------- */
+:root {
+  /* Proofgrammers palette, drawn from the course site and logo */
+  --ink: #3b1b52;
+  --ink-deep: #2a1136;
+  --mauve: #7e5186;
+  --mauve-soft: #9c6fa6;
+  --orchid: #c85a9e;
+  --orchid-deep: #a33b7e;
+  --orchid-light: #f0a8cf;
+  --paper: #fdf8fc;
+  --paper-warm: #fffdfd;
+  --lavender: #efe2f4;
+  --line: #ddc9e6;
+  --ivory: #f4e6b8;
+  --ivory-ink: #8a6716;
+
+  /* Type */
+  --display: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Ubuntu Mono", "Courier New", monospace;
+}
+
+/* ---------- 3. PAGE ---------- */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #d9d2df;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: var(--body);
+  color: var(--ink);
+}
+.page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+p, h1, h2, h3, h4, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+/* Small reusable bits */
+.kicker {
+  font-family: var(--mono);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+   BLOCK A — TOP BAR
+   ========================================================================= */
+.topbar {
+  height: 0.40in;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.42in;
+  flex: 0 0 0.40in;
+}
+.topbar .left {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lavender);
+}
+.topbar .right {
+  font-family: var(--mono);
+  font-size: 8.1pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  border: 1px solid rgba(200, 90, 158, 0.85);
+  background: rgba(200, 90, 158, 0.12);
+  padding: 0.045in 0.11in 0.035in;
+  border-radius: 999px;
+  line-height: 1;
+}
+.topbar .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orchid-light);
+  margin: 0 0.07in 0.02in;
+}
+
+/* ============================================================================
+   BLOCK B — HERO
+   ========================================================================= */
+.hero {
+  position: relative;
+  flex: 0 0 3.82in;
+  height: 3.82in;
+  padding: 0.32in 0.42in 0 0.42in;
+  overflow: hidden;
+}
+.hero-copy {
+  position: relative;
+  z-index: 5;
+  width: 5.18in;
+}
+.hero .kicker {
+  color: var(--mauve);
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  margin-bottom: 0.10in;
+}
+.hero .kicker .tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.045in 0.10in 0.035in;
+  border-radius: 0.03in;
+  font-size: 6.4pt;
+  letter-spacing: 0.16em;
+}
+.hero .kicker .tag .accent { color: var(--orchid-light); }
+.hero .kicker-term {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 7.2pt;
+  letter-spacing: 0.14em;
+}
+.hero .kicker-note {
+  color: var(--mauve);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 56pt;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.hero h1 .line2 {
+  display: block;
+  color: var(--orchid-deep);
+}
+.hero .tagline {
+  margin-top: 0.11in;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17pt;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.hero .tagline em {
+  font-style: normal;
+  color: var(--orchid-deep);
+  box-shadow: inset 0 -0.10em 0 rgba(200, 90, 158, 0.28);
+}
+.hero .intro {
+  margin-top: 0.08in;
+  max-width: 4.55in;
+  font-size: 9.2pt;
+  line-height: 1.36;
+  color: #4a2b5b;
+}
+.hero .badges {
+  display: flex;
+  gap: 0.065in;
+  margin-top: 0.10in;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 0.045in 0.085in 0.035in;
+  border: 1px solid var(--mauve);
+  border-radius: 999px;
+  color: var(--mauve);
+  background: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+.badge.solid {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* --- Hero artwork: graph-paper arch, elephant, Turing tape, stamps --- */
+.hero-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.82in;
+  z-index: 1;
+}
+.arch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.72in;
+  height: 3.70in;
+  background:
+    linear-gradient(rgba(249, 247, 251, 0.08) 1px, transparent 1px) 0 0 / 0.14in 0.14in,
+    linear-gradient(90deg, rgba(249, 247, 251, 0.08) 1px, transparent 1px) 0 0 / 0.14in 0.14in,
+    var(--ink);
+  border-radius: 1.30in 0 0 0.45in;
+}
+.arch::after {
+  content: "";
+  position: absolute;
+  inset: 0.10in;
+  border: 1px solid rgba(244, 230, 184, 0.18);
+  border-radius: 1.22in 0 0 0.38in;
+  pointer-events: none;
+}
+.paper-circle {
+  position: absolute;
+  top: 0.28in;
+  right: 0.18in;
+  width: 2.34in;
+  height: 2.34in;
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(59, 27, 82, 0.07) 1px, transparent 1px) 0 0 / 0.10in 0.10in,
+    linear-gradient(90deg, rgba(59, 27, 82, 0.07) 1px, transparent 1px) 0 0 / 0.10in 0.10in,
+    var(--paper);
+  border: 1px solid rgba(200, 90, 158, 0.45);
+  box-shadow: inset 0 0 0 0.05in rgba(255, 255, 255, 0.55);
+  z-index: 2;
+}
+.elephant {
+  position: absolute;
+  width: 2.22in;
+  height: auto;
+  top: 0.34in;
+  right: 0.22in;
+  z-index: 3;
+  filter: drop-shadow(0 0.06in 0.08in rgba(30, 8, 40, 0.24));
+}
+.tape {
+  position: absolute;
+  top: 2.04in;
+  right: 0.06in;
+  width: 2.52in;
+  height: 0.34in;
+  display: flex;
+  transform: rotate(-3deg);
+  z-index: 4;
+  filter: drop-shadow(0 0.04in 0.05in rgba(30, 8, 40, 0.25));
+}
+.tape span {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ink);
+  margin-left: -1px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10.5pt;
+  line-height: 1;
+}
+.tape span:first-child { margin-left: 0; }
+.tape span.blank {
+  background: var(--ivory);
+  position: relative;
+}
+.tape span.blank::before {
+  content: "";
+  position: absolute;
+  top: -0.155in;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 0.065in solid transparent;
+  border-right: 0.065in solid transparent;
+  border-top: 0.09in solid var(--orchid);
+}
+
+.sticker {
+  position: absolute;
+  z-index: 6;
+  top: 2.54in;
+  right: 2.30in;
+  width: 1.04in;
+  height: 1.04in;
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--ink);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0.04in 0.09in rgba(30, 10, 40, 0.24);
+  transform: rotate(-9deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 5.8pt;
+  line-height: 1.05;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.sticker strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16pt;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  margin-bottom: 0.025in;
+}
+.proof-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 0.11in;
+  right: 0.13in;
+  padding: 0.035in 0.075in 0.028in;
+  border: 1px solid rgba(244, 230, 184, 0.75);
+  color: var(--ivory);
+  background: rgba(42, 17, 54, 0.25);
+  font-family: var(--mono);
+  font-size: 5.8pt;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transform: rotate(5deg);
+}
+.qed-stamp {
+  position: absolute;
+  z-index: 5;
+  bottom: 0.13in;
+  right: 0.14in;
+  padding: 0.045in 0.08in 0.035in;
+  background: var(--ivory);
+  color: var(--ink);
+  border: 1px solid var(--orchid);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 6.4pt;
+  letter-spacing: 0.12em;
+  transform: rotate(-7deg);
+  box-shadow: 0 0.025in 0.05in rgba(30, 10, 40, 0.22);
+}
+
+/* ============================================================================
+   BLOCK C — PIPELINE BAND
+   ========================================================================= */
+.pipeline {
+  flex: 0 0 0.86in;
+  height: 0.86in;
+  background: var(--mauve);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  padding: 0 0.42in;
+  gap: 0.14in;
+  position: relative;
+  overflow: hidden;
+}
+.pipeline .pipeline-label {
+  flex: 0 0 0.90in;
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0.12in;
+  flex: 1;
+  justify-content: space-between;
+}
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.09in;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.step .icon {
+  width: 0.36in;
+  height: 0.36in;
+  flex: 0 0 0.36in;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 230, 184, 0.65);
+  border-radius: 50%;
+}
+.step .icon svg {
+  width: 0.20in;
+  height: 0.20in;
+  display: block;
+}
+.step .label {
+  font-family: var(--mono);
+  font-size: 7.7pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper);
+  line-height: 1.1;
+}
+.step .sub {
+  font-family: var(--body);
+  font-size: 6.3pt;
+  letter-spacing: 0.02em;
+  color: var(--lavender);
+  opacity: 0.9;
+  margin-top: 0.035in;
+  white-space: nowrap;
+}
+.arrow {
+  flex: 0 0 0.16in;
+  width: 0.16in;
+  height: 0.16in;
+  color: var(--ivory);
+  opacity: 0.85;
+}
+
+/* ============================================================================
+   BLOCK D — WHAT YOU'LL LEARN
+   ========================================================================= */
+.learn {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.26in 0.42in 0 0.42in;
+  display: flex;
+  flex-direction: column;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.13in;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19pt;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.section-head .note {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mauve);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.17in;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.card {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 0.10in;
+  padding: 0.15in 0.16in 0.14in;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(59, 27, 82, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.055in;
+  background: var(--card-accent, var(--orchid));
+}
+.card .module-tag {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-ink, var(--orchid-deep));
+  margin-top: 0.08in;
+}
+.card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14pt;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-top: 0.02in;
+  max-width: 2.0in;
+  text-transform: uppercase;
+}
+.card .promise {
+  font-size: 8.6pt;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--mauve);
+  margin-top: 0.06in;
+  margin-bottom: 0.10in;
+}
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.045in;
+}
+.card li {
+  font-size: 8.2pt;
+  line-height: 1.28;
+  color: #4a2b5b;
+  padding-left: 0.12in;
+  position: relative;
+}
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.055in;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--orchid));
+}
+.card .critique {
+  margin-top: auto;
+  padding-top: 0.08in;
+  border-top: 1px dashed var(--line);
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  line-height: 1.3;
+}
+.card .critique b {
+  color: var(--card-ink, var(--orchid-deep));
+  font-weight: 700;
+}
+.also {
+  margin-top: 0.09in;
+  padding-top: 0.06in;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b5879;
+  line-height: 1.35;
+}
+.also b {
+  color: var(--mauve);
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================================
+   BLOCK E — TOOLKIT
+   ========================================================================= */
+.toolkit {
+  flex: 0 0 0.86in;
+  height: 0.86in;
+  background: var(--lavender);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.09in 0.42in;
+  display: flex;
+  align-items: center;
+  gap: 0.22in;
+}
+.toolkit .label {
+  flex: 0 0 0.90in;
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mauve);
+}
+.toolkit .label b {
+  display: block;
+  color: var(--ink);
+  font-weight: 700;
+}
+.chip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.055in;
+}
+.chip-row {
+  display: flex;
+  gap: 0.05in;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(126, 81, 134, 0.30);
+  border-radius: 0.025in;
+  padding: 0.035in 0.065in 0.028in;
+  white-space: nowrap;
+}
+.chip.hot {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.chip.hot::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--orchid-light);
+  margin-right: 0.035in;
+  vertical-align: 0.02in;
+}
+
+/* ============================================================================
+   BLOCK F — SCHEDULE / CTA FOOTER
+   ========================================================================= */
+.footer {
+  flex: 0 0 2.08in;
+  height: 2.08in;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.22in 0.42in 0.22in;
+  display: grid;
+  grid-template-columns: 4.19in 1.36in 1.77in;
+  gap: 0.17in;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.045in;
+  background: var(--orchid);
+}
+.schedule-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.footer .label {
+  font-family: var(--mono);
+  font-size: 6.7pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lavender);
+}
+.footer .label .term {
+  color: var(--ivory);
+  font-weight: 700;
+}
+.footer .label .campus {
+  color: var(--lavender);
+}
+.footer .dates {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13pt;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  margin-top: 0.04in;
+  color: var(--paper);
+}
+.schedule {
+  margin-top: 0.10in;
+  display: grid;
+  grid-template-columns: 0.40in 1.02in 1.10in 1.55in;
+  row-gap: 0.045in;
+  align-items: baseline;
+}
+.schedule .tag {
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.10em;
+  color: var(--orchid-light);
+  text-transform: uppercase;
+}
+.schedule .day {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: var(--paper);
+}
+.schedule .time {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 10.5pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .room {
+  font-family: var(--mono);
+  font-size: 6.4pt;
+  letter-spacing: 0.06em;
+  color: var(--lavender);
+  text-transform: uppercase;
+}
+.quick-facts {
+  margin-top: 0.10in;
+  padding-top: 0.075in;
+  border-top: 1px solid rgba(249, 247, 251, 0.18);
+  font-family: var(--mono);
+  font-size: 6.3pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  line-height: 1.3;
+}
+.instructor {
+  margin-top: auto;
+  font-size: 7.0pt;
+  line-height: 1.4;
+  color: var(--lavender);
+}
+.instructor b {
+  color: var(--paper);
+  font-weight: 600;
+}
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.06in;
+}
+.qr {
+  width: 1.02in;
+  height: 1.02in;
+  background: var(--paper);
+  padding: 0.05in;
+  border-radius: 0.05in;
+  box-shadow: 0 0.03in 0.08in rgba(20, 5, 30, 0.25);
+}
+.qr img { width: 100%; height: 100%; display: block; }
+.qr-block .scan {
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--lavender);
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cta .become {
+  font-family: var(--mono);
+  font-size: 7.0pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+.wordmark-tile {
+  width: 1.72in;
+  height: 0.64in;
+  background: var(--paper);
+  border: 1px solid rgba(200, 90, 158, 0.45);
+  border-radius: 0.05in;
+  display: grid;
+  place-items: center;
+  margin: 0.05in 0 0.06in;
+  box-shadow: 0 0.03in 0.06in rgba(20, 5, 30, 0.22);
+}
+.wordmark-tile img {
+  width: 1.58in;
+  height: auto;
+  display: block;
+}
+.cta .url {
+  font-family: var(--mono);
+  font-size: 7.4pt;
+  letter-spacing: 0.04em;
+  color: var(--orchid-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240, 168, 207, 0.55);
+  padding-bottom: 0.015in;
+}
+.cta .url:hover { color: var(--ivory); }
+
+/* Slight print nicety */
+.page, .topbar, .pipeline, .footer, .arch, .sticker, .chip, .card,
+.wordmark-tile, .paper-circle, .tape, .proof-stamp, .qed-stamp {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ======================================================================
+       BLOCK A — TOP BAR
+       =================================================================== -->
+  <header class="topbar">
+    <div class="left">Allegheny College <span class="dot"></span> Computer &amp; Information Science</div>
+    <div class="right">Fall 2025</div>
+  </header>
+
+  <!-- ======================================================================
+       BLOCK B — HERO: course title, pitch, elephant, Turing tape, CS core
+       =================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <div class="kicker">
+        <span class="tag">CMPSC&nbsp;<span class="accent">204</span></span>
+        <span class="kicker-term">Fall 2025</span>
+        <span class="kicker-note">A Proofgrammers course</span>
+      </div>
+
+      <h1>
+        <span class="line1">THEORETICAL</span>
+        <span class="line2">MACHINES</span>
+      </h1>
+
+      <p class="tagline">Where <em>proofs</em> meet <em>Python</em>.</p>
+
+      <p class="intro">
+        Explore what computers can and cannot do — then make the theory run.
+        Build Turing machines, finite automata, and complexity proofs in Python,
+        and learn to reason rigorously about the limits and cost of computation.
+        It’s theory, applied — and it builds practical, career-ready skills for
+        software engineers and data scientists who build what comes next.
+      </p>
+
+      <div class="badges">
+        <span class="badge solid">4 credits</span>
+        <span class="badge">QR + SP</span>
+        <span class="badge">Prereq: CMPSC 102</span>
+        <span class="badge">Theory + Python</span>
+        <span class="badge">Applied</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="arch"></div>
+      <div class="paper-circle"></div>
+      <div class="tape">
+        <span>0</span><span>1</span><span>0</span><span>1</span><span class="blank">_</span><span>1</span><span>0</span><span>1</span>
+      </div>
+      <img class="elephant" src="assets/elephant.png" alt="">
+      <div class="proof-stamp">P vs NP?</div>
+      <div class="qed-stamp">Q.E.D.</div>
+      <div class="sticker">
+        <strong>CS</strong>
+        core<br>course
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK C — THE PROOF PIPELINE
+       =================================================================== -->
+  <section class="pipeline" id="pipeline">
+    <div class="pipeline-label">
+      The proof<br>pipeline
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f4e6b8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="9" rx="1"/>
+            <path d="M8 8v9M13 8v9M18 8v9"/>
+            <path d="M10 4h4l-2 3z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Model</div>
+          <div class="sub">Machines &amp; automata</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f4e6b8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M9 14l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Prove</div>
+          <div class="sub">Reductions &amp; complexity</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f4e6b8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6L3 12l5 6M16 6l5 6-5 6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Code</div>
+          <div class="sub">Python + uv</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f4e6b8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/>
+            <path d="M8 15h8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Verify</div>
+          <div class="sub">Tests &amp; experiments</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK D — WHAT YOU'LL LEARN: 3 module cards
+       =================================================================== -->
+  <section class="learn" id="learn">
+    <div class="section-head">
+      <h2>What you’ll learn</h2>
+      <div class="note">3 modules · 14 chapters · 3 executable exams</div>
+    </div>
+
+    <div class="cards">
+      <!-- Card 1 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--orchid); --card-ink: var(--orchid-deep)">
+        <div class="module-tag">Module 01</div>
+        <h3>Machines &amp; Limits</h3>
+        <p class="promise">What can be computed?</p>
+        <ul>
+          <li>Computability</li>
+          <li>Turing machines</li>
+          <li>Impossible programs</li>
+          <li>Formal proofs</li>
+        </ul>
+        <div class="critique"><b>Code</b> · a Turing machine</div>
+      </article>
+
+      <!-- Card 2 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--mauve); --card-ink: var(--mauve)">
+        <div class="module-tag">Module 02</div>
+        <h3>Universality</h3>
+        <p class="promise">One machine to run them all.</p>
+        <ul>
+          <li>Universal programs</li>
+          <li>Reductions</li>
+          <li>Nondeterminism</li>
+          <li>Finite automata</li>
+        </ul>
+        <div class="critique"><b>Code</b> · a reduction</div>
+      </article>
+
+      <!-- Card 3 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: #b8862b; --card-ink: var(--ivory-ink)">
+        <div class="module-tag">Module 03</div>
+        <h3>Complexity &amp; NP</h3>
+        <p class="promise">Hard problems, sharp proofs.</p>
+        <ul>
+          <li>Poly vs Expo</li>
+          <li>PolyCheck &amp; NPoly</li>
+          <li>Polynomial reductions</li>
+          <li>NP-completeness</li>
+        </ul>
+        <div class="critique"><b>Code</b> · a complexity lab</div>
+      </article>
+    </div>
+
+    <p class="also">
+      <b>Textbook</b> · What Can Be Computed? (MacCormick) · Jupyter · Quarto ·
+      Git/GitHub · charettes · team presentations
+    </p>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK E — TOOLKIT
+       =================================================================== -->
+  <section class="toolkit" id="toolkit">
+    <div class="label"><b>Your</b> toolkit</div>
+    <div class="chip-rows">
+      <div class="chip-row">
+        <span class="chip">Python</span>
+        <span class="chip">Jupyter</span>
+        <span class="chip">Quarto</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">uv</span>
+        <span class="chip">Markdown</span>
+        <span class="chip">RevealJS</span>
+        <span class="chip hot">GitHub Copilot</span>
+        <span class="chip hot">Pi Coding Agent</span>
+        <span class="chip hot">OpenCode</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK F — FALL 2025 SCHEDULE + CTA
+       =================================================================== -->
+  <footer class="footer" id="schedule">
+    <div class="schedule-block">
+      <div class="label"><span class="term">Fall 2025</span> · <span class="campus">Main Campus</span></div>
+      <div class="dates">August 26 — December 5, 2025</div>
+
+      <div class="schedule">
+        <span class="tag">Class</span>
+        <span class="day">T / Th</span>
+        <span class="time">9:30 – 10:45 AM</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">Lab</span>
+        <span class="day">Tuesday</span>
+        <span class="time">2:30 – 4:00 PM</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">Final</span>
+        <span class="day">Mon, Dec 8</span>
+        <span class="time">7:00 – 9:00 PM</span>
+        <span class="room">Alden Hall, 109</span>
+      </div>
+
+      <div class="quick-facts">CS core · theory + Python · applied proofs</div>
+
+      <div class="instructor">
+        Department of Computer and Information Science<br>
+        Allegheny College
+      </div>
+    </div>
+
+    <div class="qr-block">
+      <div class="qr"><img src="assets/qr-proofgrammers.svg" alt="QR code for proofgrammers.com"></div>
+      <div class="scan">Scan to explore</div>
+    </div>
+
+    <div class="cta">
+      <div class="become">Become one of the</div>
+      <div class="wordmark-tile"><img src="assets/wordmark.png" alt="Proofgrammers"></div>
+      <a class="url" href="https://proofgrammers.com/">proofgrammers.com</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
