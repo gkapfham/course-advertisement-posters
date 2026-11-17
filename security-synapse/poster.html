@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMPSC 403 — Computer Security — Fall 2026</title>
+<style>
+/* ============================================================================
+   COMPUTER SECURITY / SECURITY SYNAPSE — FALL 2026 PROMOTIONAL POSTER
+   US Letter, 8.5 x 11 in.  Everything is editable here: colors, type, copy.
+   Build:  ./build.sh      Preview: open this file in a browser.
+   Sections are labelled BLOCK A–F in the HTML below.
+   ========================================================================= */
+
+/* ---------- 1. FONTS (local, so the poster renders offline) ---------- */
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("assets/fonts/chakra-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("assets/fonts/chakra-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: block;
+}
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("assets/fonts/chakra-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("assets/fonts/ubuntu-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+
+/* ---------- 2. DESIGN TOKENS ---------- */
+:root {
+  /* Security Synapse palette, drawn from securitysynapse.org */
+  --blue: #2e5799;          /* logo blue */
+  --azure: #03a9f4;         /* site cyan */
+  --azure-soft: #7fd4fb;
+  --orange: #ff5722;        /* logo orange */
+  --orange-deep: #cf3d0c;
+  --navy: #14294a;          /* deep security ink */
+  --navy-deep: #0d1c34;
+  --paper: #fdfdff;
+  --paper-warm: #ffffff;
+  --mist: #e8f2fb;
+  --line: #cfdcec;
+  --ink: #14263f;
+  --muted: #40587a;
+
+  /* Type */
+  --display: "Chakra Petch", "Trebuchet MS", sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Ubuntu Mono", "Courier New", monospace;
+}
+
+/* ---------- 3. PAGE ---------- */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #cdd8e6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: var(--body);
+  color: var(--ink);
+}
+.page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+p, h1, h2, h3, h4, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+   BLOCK A — TOP BAR
+   ========================================================================= */
+.topbar {
+  height: 0.40in;
+  background: var(--navy);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.42in;
+  flex: 0 0 0.40in;
+  position: relative;
+  z-index: 10;
+}
+.topbar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0.045in;
+  background: var(--azure);
+}
+.topbar .left {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.topbar .right {
+  font-family: var(--mono);
+  font-size: 8.1pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  background: var(--orange);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.045in 0.11in 0.035in;
+  border-radius: 999px;
+  line-height: 1;
+  box-shadow: 0 0.02in 0.05in rgba(0, 0, 0, 0.28);
+}
+.topbar .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--azure);
+  margin: 0 0.07in 0.02in;
+}
+
+/* ============================================================================
+   BLOCK B — HERO
+   ========================================================================= */
+.hero {
+  position: relative;
+  flex: 0 0 3.76in;
+  height: 3.76in;
+  padding: 0.30in 0.42in 0 0.42in;
+  overflow: hidden;
+}
+.hero-copy {
+  position: relative;
+  z-index: 5;
+  width: 5.16in;
+}
+.hero .kicker {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  margin-bottom: 0.105in;
+}
+.hero .kicker .tag {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--paper);
+  padding: 0.045in 0.10in 0.035in;
+  border-radius: 0.03in;
+  font-size: 6.4pt;
+  letter-spacing: 0.16em;
+}
+.hero .kicker .tag .accent { color: var(--azure-soft); }
+.hero .kicker-term {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 7.2pt;
+  letter-spacing: 0.14em;
+}
+.hero .kicker-note {
+  color: var(--blue);
+  font-size: 6.6pt;
+  letter-spacing: 0.14em;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 60pt;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+.hero h1 .line2 {
+  display: block;
+  color: var(--blue);
+}
+.hero .tagline {
+  margin-top: 0.09in;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 16.5pt;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+.hero .tagline em {
+  font-style: normal;
+  color: var(--orange-deep);
+  box-shadow: inset 0 -0.10em 0 rgba(3, 169, 244, 0.30);
+}
+.hero .intro {
+  margin-top: 0.08in;
+  max-width: 4.62in;
+  font-size: 9.1pt;
+  line-height: 1.36;
+  color: #33486a;
+}
+.hero .badges {
+  display: flex;
+  gap: 0.06in;
+  margin-top: 0.10in;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.045in 0.08in 0.035in;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  color: var(--blue);
+  background: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+.badge.solid {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--paper);
+}
+
+/* --- Hero artwork: synapse arch, logo, tool tape, stamps --- */
+.hero-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.78in;
+  height: 3.76in;
+  z-index: 1;
+}
+.arch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.78in;
+  height: 3.64in;
+  background:
+    radial-gradient(circle at 62% 30%, rgba(3, 169, 244, 0.34), transparent 62%),
+    linear-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px) 0 0 / 0.13in 0.13in,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.10) 1px, transparent 1px) 0 0 / 0.13in 0.13in,
+    var(--navy);
+  border-radius: 1.34in 0 0 0.32in;
+}
+.arch::after {
+  content: "";
+  position: absolute;
+  inset: 0.10in;
+  border: 1px solid rgba(127, 212, 251, 0.26);
+  border-radius: 1.26in 0 0 0.26in;
+  pointer-events: none;
+}
+.synapse-net {
+  position: absolute;
+  top: 0.20in;
+  right: 0.10in;
+  width: 2.58in;
+  height: 2.10in;
+  z-index: 2;
+  opacity: 0.9;
+}
+.paper-circle {
+  position: absolute;
+  top: 0.30in;
+  right: 0.30in;
+  width: 2.16in;
+  height: 2.16in;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 42%, #ffffff 0%, #f3f9ff 72%, #e9f3fe 100%);
+  border: 1px solid rgba(3, 169, 244, 0.45);
+  box-shadow: inset 0 0 0 0.05in rgba(255, 255, 255, 0.7),
+              0 0.06in 0.14in rgba(6, 18, 36, 0.35);
+  z-index: 3;
+}
+.logo {
+  position: absolute;
+  width: 1.90in;
+  height: auto;
+  top: 0.41in;
+  right: 0.43in;
+  z-index: 4;
+}
+.tape {
+  position: absolute;
+  top: 2.55in;
+  right: 0.14in;
+  width: 1.92in;
+  height: 0.30in;
+  display: flex;
+  transform: rotate(-3deg);
+  z-index: 6;
+  filter: drop-shadow(0 0.04in 0.05in rgba(6, 18, 36, 0.35));
+}
+.tape span {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--navy);
+  margin-left: -1px;
+  background: var(--paper);
+  color: var(--navy);
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding-top: 0.012in;
+}
+.tape span:first-child { margin-left: 0; }
+.tape span.hot {
+  background: var(--orange);
+  border-color: var(--orange-deep);
+  color: var(--navy-deep);
+  font-weight: 700;
+}
+
+.sticker {
+  position: absolute;
+  z-index: 7;
+  top: 2.18in;
+  right: 2.18in;
+  width: 1.02in;
+  height: 1.02in;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy-deep);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0.04in 0.09in rgba(6, 18, 36, 0.34);
+  transform: rotate(-9deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 5.6pt;
+  line-height: 1.05;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.sticker strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19pt;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+  margin-bottom: 0.03in;
+}
+.threat-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 0.11in;
+  right: 0.12in;
+  padding: 0.035in 0.075in 0.028in;
+  border: 1px solid rgba(127, 212, 251, 0.8);
+  color: var(--azure-soft);
+  background: rgba(13, 28, 52, 0.35);
+  font-family: var(--mono);
+  font-size: 5.8pt;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transform: rotate(5deg);
+}
+.zero-stamp {
+  position: absolute;
+  z-index: 6;
+  bottom: 0.14in;
+  right: 0.13in;
+  padding: 0.045in 0.08in 0.035in;
+  background: var(--paper);
+  color: var(--navy);
+  border: 1px solid var(--azure);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 6.4pt;
+  letter-spacing: 0.12em;
+  transform: rotate(-7deg);
+  box-shadow: 0 0.025in 0.05in rgba(6, 18, 36, 0.3);
+}
+
+/* ============================================================================
+   BLOCK C — PIPELINE BAND
+   ========================================================================= */
+.pipeline {
+  flex: 0 0 0.86in;
+  height: 0.86in;
+  background: var(--azure);
+  color: var(--navy-deep);
+  display: flex;
+  align-items: center;
+  padding: 0 0.42in;
+  gap: 0.14in;
+  position: relative;
+  overflow: hidden;
+}
+.pipeline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.26) 1px, transparent 1px) 0 0 / 0.22in 0.22in;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.pipeline .pipeline-label {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 0.90in;
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.steps {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.10in;
+  flex: 1;
+  justify-content: space-between;
+}
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.09in;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.step .icon {
+  width: 0.36in;
+  height: 0.36in;
+  flex: 0 0 0.36in;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(13, 28, 52, 0.55);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+.step .icon svg {
+  width: 0.20in;
+  height: 0.20in;
+  display: block;
+}
+.step .label {
+  font-family: var(--mono);
+  font-size: 7.6pt;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  line-height: 1.1;
+}
+.step .sub {
+  font-family: var(--body);
+  font-size: 6.2pt;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: rgba(13, 28, 52, 0.82);
+  margin-top: 0.035in;
+  white-space: nowrap;
+}
+.arrow {
+  flex: 0 0 0.16in;
+  width: 0.16in;
+  height: 0.16in;
+  color: var(--navy);
+  opacity: 0.7;
+}
+
+/* ============================================================================
+   BLOCK D — WHAT YOU'LL LEARN
+   ========================================================================= */
+.learn {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.26in 0.42in 0 0.42in;
+  display: flex;
+  flex-direction: column;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.13in;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19pt;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+.section-head .note {
+  font-family: var(--mono);
+  font-size: 6.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.17in;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.card {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 0.10in;
+  padding: 0.16in 0.16in 0.13in;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(20, 41, 74, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.055in;
+  background: var(--card-accent, var(--azure));
+}
+.card .module-tag {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-ink, var(--blue));
+  margin-top: 0.08in;
+}
+.card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13.8pt;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+  margin-top: 0.03in;
+  max-width: 2.12in;
+  text-transform: uppercase;
+}
+.card .promise {
+  font-size: 8.5pt;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 0.07in;
+  margin-bottom: 0.10in;
+}
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.045in;
+}
+.card li {
+  font-size: 8.2pt;
+  line-height: 1.28;
+  color: #33486a;
+  padding-left: 0.12in;
+  position: relative;
+}
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.055in;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--azure));
+}
+.card .critique {
+  margin-top: auto;
+  padding-top: 0.08in;
+  border-top: 1px dashed var(--line);
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.card .critique b {
+  color: var(--card-ink, var(--blue));
+  font-weight: 700;
+}
+.also {
+  margin-top: 0.10in;
+  padding-top: 0.06in;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 6.1pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #55688a;
+  line-height: 1.35;
+}
+.also b {
+  color: var(--blue);
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================================
+   BLOCK E — TOOLKIT
+   ========================================================================= */
+.toolkit {
+  flex: 0 0 0.86in;
+  height: 0.86in;
+  background: var(--mist);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.09in 0.42in;
+  display: flex;
+  align-items: center;
+  gap: 0.20in;
+}
+.toolkit .label {
+  flex: 0 0 0.90in;
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.toolkit .label b {
+  display: block;
+  color: var(--navy);
+  font-weight: 700;
+}
+.chip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.055in;
+}
+.chip-row {
+  display: flex;
+  gap: 0.05in;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--paper);
+  border: 1px solid rgba(46, 87, 153, 0.30);
+  border-radius: 0.025in;
+  padding: 0.035in 0.065in 0.028in;
+  white-space: nowrap;
+}
+.chip.hot {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--paper);
+}
+.chip.hot::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-right: 0.035in;
+  vertical-align: 0.02in;
+}
+
+/* ============================================================================
+   BLOCK F — SCHEDULE / CTA FOOTER
+   ========================================================================= */
+.footer {
+  flex: 0 0 2.16in;
+  height: 2.16in;
+  background: var(--navy);
+  color: var(--paper);
+  padding: 0.17in 0.42in 0.15in;
+  display: grid;
+  grid-template-columns: 4.22in 1.34in 1.72in;
+  gap: 0.19in;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.045in;
+  background: linear-gradient(90deg, var(--azure) 0%, var(--azure) 54%, var(--orange) 54%, var(--orange) 100%);
+}
+.footer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 4.55in;
+  width: 1.1in;
+  height: 1.1in;
+  border: 1px solid rgba(3, 169, 244, 0.10);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.schedule-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+.footer .label {
+  font-family: var(--mono);
+  font-size: 6.7pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.footer .label .term {
+  color: var(--orange);
+  font-weight: 700;
+}
+.footer .label .campus {
+  color: var(--azure-soft);
+}
+.footer .dates {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12.5pt;
+  letter-spacing: -0.01em;
+  line-height: 1.0;
+  margin-top: 0.045in;
+  color: var(--paper);
+  text-transform: uppercase;
+}
+.schedule {
+  margin-top: 0.07in;
+  display: grid;
+  grid-template-columns: 0.58in 1.12in 1.40in 0.98in;
+  column-gap: 0.045in;
+  row-gap: 0.018in;
+  align-items: baseline;
+}
+.schedule .tag {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.09em;
+  color: var(--azure-soft);
+  text-transform: uppercase;
+}
+.schedule .day {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 9.3pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .time {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 9.0pt;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.schedule .room {
+  font-family: var(--mono);
+  font-size: 6.2pt;
+  letter-spacing: 0.05em;
+  color: var(--mist);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.quick-facts {
+  margin-top: 0.06in;
+  padding-top: 0.045in;
+  border-top: 1px solid rgba(253, 253, 255, 0.18);
+  font-family: var(--mono);
+  font-size: 6.0pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--azure-soft);
+  line-height: 1.3;
+}
+.instructor {
+  margin-top: auto;
+  font-size: 6.8pt;
+  line-height: 1.35;
+  color: var(--mist);
+}
+.instructor b {
+  color: var(--paper);
+  font-weight: 600;
+}
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.055in;
+}
+.qr {
+  width: 1.00in;
+  height: 1.00in;
+  background: var(--paper);
+  padding: 0.045in;
+  border-radius: 0.05in;
+  box-shadow: 0 0.03in 0.08in rgba(4, 10, 22, 0.4);
+}
+.qr img { width: 100%; height: 100%; display: block; }
+.qr-block .scan {
+  font-family: var(--mono);
+  font-size: 5.9pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cta .become {
+  font-family: var(--mono);
+  font-size: 6.8pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.wordmark {
+  margin: 0.045in 0 0.055in;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 20pt;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.wordmark .w1 { display: block; color: var(--paper); }
+.wordmark .w2 { display: block; color: var(--azure); }
+.cta .url {
+  font-family: var(--mono);
+  font-size: 7.2pt;
+  letter-spacing: 0.02em;
+  color: var(--azure-soft);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(127, 212, 251, 0.55);
+  padding-bottom: 0.015in;
+  white-space: nowrap;
+}
+.cta .url:hover { color: var(--orange); }
+
+/* Slight print nicety */
+.page, .topbar, .pipeline, .footer, .arch, .sticker, .chip, .card,
+.paper-circle, .tape, .threat-stamp, .zero-stamp {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ======================================================================
+       BLOCK A — TOP BAR
+       =================================================================== -->
+  <header class="topbar">
+    <div class="left">Allegheny College <span class="dot"></span> Computer &amp; Information Science</div>
+    <div class="right">Fall 2026</div>
+  </header>
+
+  <!-- ======================================================================
+       BLOCK B — HERO: course title, pitch, synapse mark, tool tape, stickers
+       =================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <div class="kicker">
+        <span class="tag">CMPSC&nbsp;<span class="accent">403</span></span>
+        <span class="kicker-term">Fall 2026</span>
+        <span class="kicker-note">A Security Synapse course</span>
+      </div>
+
+      <h1>
+        <span class="line1">Computer</span>
+        <span class="line2">Security</span>
+      </h1>
+
+      <p class="tagline">Where <em>concepts</em> connect to <em>code</em>.</p>
+
+      <p class="intro">
+        Learn to think like an attacker and build like a defender. Break ciphers,
+        fuzz servers, trace programs, and secure networks and systems — then
+        connect every high-level concept to working code in Python, Rust, C, Go,
+        and Java. It’s hands-on security engineering that builds career-ready
+        skills for protecting what comes next.
+      </p>
+
+      <div class="badges">
+        <span class="badge solid">4 credits</span>
+        <span class="badge">QR + SP</span>
+        <span class="badge">Prereq: CMPSC 200/201</span>
+        <span class="badge">Security engineering</span>
+        <span class="badge">Hands-on labs</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="arch"></div>
+      <svg class="synapse-net" viewBox="0 0 260 210" fill="none">
+        <g stroke="#03a9f4" stroke-width="1" opacity="0.55">
+          <path d="M18 166 L74 118 L132 132 L186 86 L246 104"/>
+          <path d="M18 60 L64 78 L120 44 L188 66 L246 30"/>
+          <path d="M74 118 L64 78M132 132 L120 44M186 86 L188 66M74 118 L120 44"/>
+        </g>
+        <g fill="#7fd4fb">
+          <circle cx="18" cy="166" r="3"/><circle cx="74" cy="118" r="4"/>
+          <circle cx="132" cy="132" r="3.5"/><circle cx="186" cy="86" r="4"/>
+          <circle cx="246" cy="104" r="3"/><circle cx="18" cy="60" r="3"/>
+          <circle cx="64" cy="78" r="3.5"/><circle cx="120" cy="44" r="4"/>
+          <circle cx="188" cy="66" r="3"/><circle cx="246" cy="30" r="3.5"/>
+        </g>
+        <g fill="#ff5722">
+          <circle cx="132" cy="132" r="2"/><circle cx="186" cy="86" r="2"/>
+        </g>
+      </svg>
+      <div class="paper-circle"></div>
+      <img class="logo" src="assets/security-synapse-logo.svg" alt="">
+      <div class="tape">
+        <span>AES</span><span class="hot">FUZZ</span><span>NMAP</span><span>TLS</span><span>XSS</span>
+      </div>
+      <div class="threat-stamp">Attack · Defend · Prove</div>
+      <div class="zero-stamp">ZERO TRUST</div>
+      <div class="sticker">
+        <strong>4</strong>
+        applied<br>projects
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK C — THE SECURITY PIPELINE
+       =================================================================== -->
+  <section class="pipeline" id="pipeline">
+    <div class="pipeline-label">
+      The security<br>pipeline
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d1c34" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="12" cy="12" r="3.2"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Model</div>
+          <div class="sub">Threats &amp; policies</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d1c34" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 4l10 16M17 4L7 20"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Attack</div>
+          <div class="sub">Fuzz, crack, trace</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d1c34" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Defend</div>
+          <div class="sub">Crypto &amp; access control</div>
+        </div>
+      </div>
+
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+
+      <div class="step">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d1c34" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">Evaluate</div>
+          <div class="sub">Measure &amp; present</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK D — WHAT YOU'LL LEARN: 3 module cards
+       =================================================================== -->
+  <section class="learn" id="learn">
+    <div class="section-head">
+      <h2>What you’ll learn</h2>
+      <div class="note">3 modules · 16 weeks · 4 projects + 1 summit</div>
+    </div>
+
+    <div class="cards">
+      <!-- Card 1 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--azure); --card-ink: #0a6ea3">
+        <div class="module-tag">Module 01 · Weeks 1–6</div>
+        <h3>Foundations</h3>
+        <p class="promise">Think like an attacker.</p>
+        <ul>
+          <li>Security lingo &amp; threat models</li>
+          <li>Classical &amp; modern cryptography</li>
+          <li>Malware detection &amp; defense</li>
+          <li>Security policies &amp; risk</li>
+        </ul>
+        <div class="critique"><b>Project 01</b> · server fuzzing</div>
+      </article>
+
+      <!-- Card 2 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--blue); --card-ink: var(--blue)">
+        <div class="module-tag">Module 02 · Weeks 7–11</div>
+        <h3>Attacks &amp; Defenses</h3>
+        <p class="promise">Break it, then protect it.</p>
+        <ul>
+          <li>Protocols &amp; network attacks</li>
+          <li>Provable security: one-time pad</li>
+          <li>Computational security: AES, Fernet</li>
+          <li>Layered security solutions</li>
+        </ul>
+        <div class="critique"><b>Projects 02–03</b> · crypto + networks</div>
+      </article>
+
+      <!-- Card 3 ---------------------------------------------------------- -->
+      <article class="card" style="--card-accent: var(--orange); --card-ink: var(--orange-deep)">
+        <div class="module-tag">Module 03 · Weeks 12–16</div>
+        <h3>Systems &amp; Summit</h3>
+        <p class="promise">Secure systems, real research.</p>
+        <ul>
+          <li>Access controls &amp; authorization</li>
+          <li>Handling vulnerabilities</li>
+          <li>Virtualization &amp; OS security</li>
+          <li>Independent research project</li>
+        </ul>
+        <div class="critique"><b>Projects 04 + summit</b> · trace, build, present</div>
+      </article>
+    </div>
+
+    <p class="also">
+      <b>Textbooks</b> · Computer Systems Security · Cracking Codes with Python ·
+      Joy of Cryptography · OSTEP · skill-checks · in-person assessments
+    </p>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK E — TOOLKIT
+       =================================================================== -->
+  <section class="toolkit" id="toolkit">
+    <div class="label"><b>Your</b> toolkit</div>
+    <div class="chip-rows">
+      <div class="chip-row">
+        <span class="chip">Python</span>
+        <span class="chip">Rust</span>
+        <span class="chip">C</span>
+        <span class="chip">Go</span>
+        <span class="chip">Java</span>
+        <span class="chip">Git</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">GitHub</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Linux</span>
+        <span class="chip hot">GitHub Copilot</span>
+        <span class="chip hot">Pi Coding Agent</span>
+        <span class="chip hot">OpenCode</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BLOCK F — FALL 2026 SCHEDULE + CTA
+       =================================================================== -->
+  <footer class="footer" id="schedule">
+    <div class="schedule-block">
+      <div class="label"><span class="term">Fall 2026</span> · <span class="campus">Main Campus</span></div>
+      <div class="dates">August 24 — December 10, 2026</div>
+
+      <div class="schedule">
+        <span class="tag">Class</span>
+        <span class="day">Mon / Wed / Fri</span>
+        <span class="time">11:00 – 11:50 AM</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">Lab</span>
+        <span class="day">Friday</span>
+        <span class="time">2:30 – 4:00 PM</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">Midterms</span>
+        <span class="day">Oct 2 &amp; Nov 6</span>
+        <span class="time">2:30 – 4:30 PM</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">Final</span>
+        <span class="day">Thu, Dec 10</span>
+        <span class="time">9:00 AM – 12:00 noon</span>
+        <span class="room">Alden Hall, 109</span>
+
+        <span class="tag">In person</span>
+        <span class="day">Wed, Dec 9</span>
+        <span class="time">9:00 AM – 12:00 noon</span>
+        <span class="room">Alden Hall, 109</span>
+      </div>
+
+      <div class="quick-facts">Threat models · cryptography · networks · systems</div>
+
+      <div class="instructor">
+        <b>Dr. Gregory M. Kapfhammer</b> · Department of Computer and Information Science<br>
+        Allegheny College
+      </div>
+    </div>
+
+    <div class="qr-block">
+      <div class="qr"><img src="assets/qr-securitysynapse.svg" alt="QR code for securitysynapse.org"></div>
+      <div class="scan">Scan to explore</div>
+    </div>
+
+    <div class="cta">
+      <div class="become">Become one of the</div>
+      <div class="wordmark"><span class="w1">Security</span><span class="w2">Synapse</span></div>
+      <a class="url" href="https://www.securitysynapse.org/">securitysynapse.org</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
