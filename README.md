@@ -20,6 +20,7 @@ committed so a poster can be printed or shared immediately.
 ```text
 course-advertisement-posters/
 ├── README.md
+├── AGENTS.md
 ├── .gitignore
 └── document-engineering/
     ├── README.md
@@ -37,6 +38,9 @@ course-advertisement-posters/
         ├── qr-prosegrammers.png
         └── fonts/
 ```
+
+**Agent instructions:** read [AGENTS.md](AGENTS.md) before editing a poster,
+adding a course, or changing the build workflow.
 
 Every course gets its own top-level directory. Keep the poster source, artwork,
 fonts, build script, final PDF/PNG, and a small preview together so the poster
@@ -77,6 +81,8 @@ course folder root.
 
 ## Adding a new poster
 
+0. Read [AGENTS.md](AGENTS.md) for the design system, layout constraints, and
+   QA checklist.
 1. Copy an existing course folder as a starting point:
 
    ```bash

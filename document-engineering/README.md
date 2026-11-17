@@ -46,7 +46,7 @@ the page structure:
 - **B — Hero:** course code, title, tagline, intro, badges, astronaut,
   “no prerequisite” sticker.
 - **C — Pipeline:** write → version → build → publish.
-- **D — What you’ll learn:** the three module cards.
+- **D — What you’ll learn:** the 3 module cards.
 - **E — Toolkit:** tools and AI coding agents.
 - **F — Schedule / CTA:** dates, times, rooms, instructor, QR, wordmark.
 
@@ -58,10 +58,19 @@ edit it yourself, most text is plain HTML in the corresponding block.
 A quick way to review a draft:
 
 - Does the title and one-line pitch read the way you want?
-- Are the three module headings and bullets the right emphasis?
+- Are the 3 module headings and bullets the right emphasis?
 - Is the astronaut / “no prerequisite” sticker balance right?
 - Are the schedule, room, dates, and instructor details exact?
 - Is the amount of copy about right for a printed letter poster?
+
+## Copy notes
+
+- Use numerals for counts on the poster: **3 modules**, not “Three modules.”
+- The wordmark is plural: **“Become one of the Prosegrammers.”**
+- Keep **Spring 2027** bold and visible in the top bar, hero kicker, and
+  footer label.
+- The toolkit lists **GitHub Copilot**, **Pi Coding Agent**, and **OpenCode**.
+  Gemini CLI is deprecated and should not be added back.
 
 ## Common edits
 
@@ -69,12 +78,12 @@ A quick way to review a draft:
   violet, paper, blue, gold).
 - **Title size:** `.hero h1` (`font-size: 63pt`).
 - **Course details:** block F, plus the “Spring 2027” labels in blocks A and B.
-- **Three module cards:** block D; each card has its own `MODULE` label,
+- **3 module cards:** block D; each card has its own `MODULE` label,
   heading, promise, bullets, and critique line.
 - **QR code:** replace `assets/qr-prosegrammers.svg` with a new QR SVG, or
   regenerate with `segno` for another URL.
 - **AI tools:** the toolkit currently lists GitHub Copilot, Pi Coding Agent,
-  and OpenCode. Update the three `chip hot` entries in block E if that changes.
+  and OpenCode. Update the 3 `chip hot` entries in block E if that changes.
 - **Photos/art:** the astronaut is `assets/astronaut.svg`; the footer wordmark
   is `assets/wordmark-light.svg`. Both are extracted from the course logo.
 
