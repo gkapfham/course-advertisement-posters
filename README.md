@@ -20,6 +20,11 @@ or shared immediately.
 | ![CMPSC 202 — Algorithm Analysis, Spring 2025](algorithmology/preview.png) | ![CMPSC 403 — Computer Security, Fall 2026](security-synapse/preview.png) |
 | **CMPSC 202 · Spring 2025** | **CMPSC 403 · Fall 2026** |
 
+| Developer Development | More to come |
+| --- | --- |
+| ![CMPSC 203 — Software Engineering, Fall 2026](developer-development/preview.png) | *New course posters are added here as they are scheduled.* |
+| **CMPSC 203 · Fall 2026** | |
+
 ## Posters
 
 | Course | Brand | Term | Deliverables |
@@ -28,11 +33,13 @@ or shared immediately.
 | [CMPSC 204 — Theoretical Machines](proofgrammers/) | Proofgrammers | Fall 2025 | [PDF](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.pdf) · [PNG](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.png) |
 | [CMPSC 202 — Algorithm Analysis](algorithmology/) | Algorithmology | Spring 2025 | [PDF](algorithmology/CMPSC202-Algorithmology-Spring2025.pdf) · [PNG](algorithmology/CMPSC202-Algorithmology-Spring2025.png) |
 | [CMPSC 403 — Computer Security](security-synapse/) | Security Synapse | Fall 2026 | [PDF](security-synapse/CMPSC403-Security-Synapse-Fall2026.pdf) · [PNG](security-synapse/CMPSC403-Security-Synapse-Fall2026.png) |
+| [CMPSC 203 — Software Engineering](developer-development/) | Developer Development | Fall 2026 | [PDF](developer-development/CMPSC203-Developer-Development-Fall2026.pdf) · [PNG](developer-development/CMPSC203-Developer-Development-Fall2026.png) |
 
 The series spans document engineering (Python, Quarto, docs-as-code),
 theoretical machines (computability, Turing machines, complexity), algorithm
-analysis (asymptotics, benchmarking, data structures), and computer security
-(cryptography, malware, network attacks, secure systems).
+analysis (asymptotics, benchmarking, data structures), computer security
+(cryptography, malware, network attacks, secure systems), and software
+engineering (professional skills, testing, debugging, and team projects).
 
 ## Repository layout
 
@@ -42,6 +49,7 @@ course-advertisement-posters/
 ├── AGENTS.md
 ├── .gitignore
 ├── algorithmology/
+├── developer-development/
 ├── document-engineering/
 ├── proofgrammers/
 └── security-synapse/
@@ -78,6 +86,7 @@ committed PDF/PNG pair. Each course chooses its own display face and palette:
 | Theoretical Machines | Space Grotesk | Aubergine `#3b1b52`, mauve `#7e5186`, orchid `#c85a9e`, ivory `#f4e6b8` |
 | Algorithmology | Archivo | Navy `#16203c`, blue `#3459e6`, coral `#ff6741`, amber `#ffb04a` |
 | Computer Security | Chakra Petch | Navy `#14294a`, blue `#2e5799`, cyan `#03a9f4`, orange `#ff5722` |
+| Developer Development | Archivo | Orange `#e95420`, charcoal `#1c1c1c`, off-white `#fafafa`, gold `#f4c202`, code blue `#1e88e5` |
 
 - **Body:** Inter
 - **Labels / code:** Ubuntu Mono
@@ -93,6 +102,7 @@ Each course folder has its own `build.sh`:
 
 ```bash
 ./algorithmology/build.sh
+./developer-development/build.sh
 ./document-engineering/build.sh
 ./proofgrammers/build.sh
 ./security-synapse/build.sh
@@ -113,6 +123,7 @@ course folder root.
    # or: cp -r proofgrammers new-course-name
    # or: cp -r algorithmology new-course-name
    # or: cp -r security-synapse new-course-name
+   # or: cp -r developer-development new-course-name
    ```
 
 3. Rename the PDF and PNG to match the new course and term.
@@ -133,6 +144,10 @@ course folder root.
   Monday/Wednesday/Friday 11:00–11:50 AM class and Friday 2:30–4:00 PM lab.
   The public syllabus cadence differs, so reconfirm against the registrar
   before printing.
+- **Developer Development:** the poster uses the site’s Mon/Wed/Fri
+  1:30–2:20 PM class and Wednesday 2:30–4:00 PM lab, with the final on Tuesday,
+  December 8, 2026 at 7:00 PM. The final-exam room is not published; the poster
+  uses Alden Hall, 109 and the README flags it for confirmation.
 
 ## Assets and licensing
 
@@ -141,7 +156,7 @@ course folder root.
   Ubuntu Mono under the Ubuntu Font Licence 1.0. License links live in each
   course’s `assets/fonts/README.md`.
 - Course artwork is taken from the respective course brands: Prosegrammers,
-  Proofgrammers, Algorithmology, and Security Synapse.
+  Proofgrammers, Algorithmology, Security Synapse, and Developer Development.
 - QR codes are generated with [Segno](https://segno.readthedocs.io/).
 - No repository-wide license has been added yet; add one before accepting
   outside reuse.

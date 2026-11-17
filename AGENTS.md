@@ -5,12 +5,17 @@ This repository contains print-ready promotional posters for courses in the
 this file before editing a poster, adding a course, or changing the build
 workflow.
 
-Two reference implementations live here:
+Five reference implementations live here:
 
 - `document-engineering/` — the canonical layout, Bricolage Grotesque, and the
   plum / violet / blue / gold palette.
-- `proofgrammers/` — the second palette and display face: Space Grotesk,
-  aubergine / mauve / orchid / ivory, with the circuit-board elephant.
+- `proofgrammers/` — Space Grotesk, aubergine / mauve / orchid / ivory, with the
+  circuit-board elephant.
+- `algorithmology/` — Archivo, navy / blue / coral, with the microscope mascot.
+- `security-synapse/` — Chakra Petch, navy / blue / cyan / orange, with the
+  Security Synapse mark.
+- `developer-development/` — Archivo, orange / charcoal / gold, with the
+  code-editor and commit-graph artwork.
 
 Keep new posters structurally consistent with these, while giving each course
 its own display face, palette, and artwork.
@@ -30,7 +35,7 @@ its own display face, palette, and artwork.
   not “Become a …”.
 - **Keep the term bold and visible:** it appears in the top-bar pill, the hero
   kicker, and the footer label.
-- **AI tools:** both current posters list GitHub Copilot, **Pi Coding Agent**,
+- **AI tools:** all current posters list GitHub Copilot, **Pi Coding Agent**,
   and OpenCode. Gemini CLI is deprecated; do not add it back.
 - **Facts:** keep course code, term, dates, times, rooms, instructor, credits,
   prerequisites, and distribution requirements accurate against the syllabus
@@ -44,22 +49,11 @@ course-advertisement-posters/
 ├── AGENTS.md
 ├── README.md
 ├── .gitignore
+├── algorithmology/
+├── developer-development/
 ├── document-engineering/
-│   ├── README.md
-│   ├── poster.html
-│   ├── build.sh
-│   ├── CMPSC104-Document-Engineering-Spring2027.pdf
-│   ├── CMPSC104-Document-Engineering-Spring2027.png
-│   ├── preview.png
-│   └── assets/
-└── proofgrammers/
-    ├── README.md
-    ├── poster.html
-    ├── build.sh
-    ├── CMPSC204-Theoretical-Machines-Fall2025.pdf
-    ├── CMPSC204-Theoretical-Machines-Fall2025.png
-    ├── preview.png
-    └── assets/
+├── proofgrammers/
+└── security-synapse/
 ```
 
 Each course gets a top-level directory containing its own source, assets,
@@ -83,8 +77,11 @@ remote fonts. The poster must render identically offline.
 From the repository root:
 
 ```bash
+./algorithmology/build.sh
 ./document-engineering/build.sh
 ./proofgrammers/build.sh
+./security-synapse/build.sh
+./developer-development/build.sh
 ```
 
 From a course directory:
@@ -121,6 +118,10 @@ If you add text, badges, or artwork, check that the footer still lands on the
 page. Adjust another block’s height rather than letting the page overflow. The
 browser’s `getBoundingClientRect()` is a fast way to measure the hero, badges,
 pipeline, and footer.
+
+The three newer posters also sum to 11.00in but use their own block budgets.
+Read the poster CSS before changing heights; do not assume the two original
+budgets above apply to every poster.
 
 Layout margins:
 
@@ -247,6 +248,29 @@ Theoretical Machines:
   department line unless a new instructor is confirmed.
 - QR to proofgrammers.com; “Become one of the” + cream wordmark tile.
 
+## Newer poster index
+
+The detailed anatomy and course-facts sections below use the original two
+references. For the newer posters, use this index plus each course README as
+the authoritative source.
+
+- **Algorithmology (CMPSC 202 — Algorithm Analysis, Spring 2025):** Archivo;
+  navy `#16203c`, blue `#3459e6`, coral `#ff6741`, amber `#ffb04a`; microscope
+  mascot and coral band; T/Th class time **TBA** (not published), Friday lab
+  2:30–4:00, exams Alden 109; 3 modules, 21 chapters, 3 all-hands projects.
+  Full facts: `algorithmology/README.md`.
+- **Computer Security (CMPSC 403 — Computer Security, Fall 2026):** Chakra
+  Petch; navy `#14294a`, blue `#2e5799`, cyan `#03a9f4`, orange `#ff5722`;
+  Security Synapse mark; instructor-confirmed M/W/F 11:00–11:50 class and
+  Friday 2:30–4:00 lab; 3 modules, 4 survey projects, 1 summit project. Full
+  facts: `security-synapse/README.md`.
+- **Developer Development (CMPSC 203 — Software Engineering, Fall 2026):**
+  Archivo; orange `#e95420`, charcoal `#1c1c1c`, off-white `#fafafa`, gold
+  `#f4c202`, code blue `#1e88e5`; editor/commit-graph artwork; M/W/F
+  1:30–2:20 class, Wednesday 2:30–4:00 lab, final Tue Dec 8 at 7:00 PM; 3
+  modules, 2 team projects, 3 textbooks. Full facts:
+  `developer-development/README.md`.
+
 ## Design system
 
 ### Shared
@@ -254,7 +278,8 @@ Theoretical Machines:
 - Body: Inter.
 - Labels / code / tape: Ubuntu Mono (400 and 700).
 - Paper: warm off-white (`#f9f7fb` for Document Engineering, `#fdf8fc` for
-  Theoretical Machines).
+  Theoretical Machines, and the course-specific paper colors in the root
+  README).
 - Format: US Letter portrait; vector PDF + 300 DPI PNG.
 - Structure: blocks A–F, full-bleed dark footer, 0.42in side margins.
 
@@ -301,13 +326,16 @@ Theoretical Machines:
 - Footer: gold/orchid top rule, full bleed, QR in a cream tile.
 - Keep display faces course-specific; do not recolor one poster with another
   course’s palette.
+- The root README’s design-system table is the canonical palette index for all
+  five posters; the detailed examples below cover the original two.
 
 ## Copy rules
 
 - Use numerals for counts: **3 modules**, **12 demos**, **14 chapters**,
   **3 executable exams**.
 - Use “**Become one of the Prosegrammers**” / “**Become one of the
-  Proofgrammers**” with the plural wordmark.
+  Proofgrammers**” / “**Become one of the Algorithmologists**” / “**Become one
+  of the developing developers**” with the plural brand.
 - Keep the term bold in the top bar, hero kicker, and footer.
 - No emojis. Decorative icons are SVG or the course artwork.
 - Spell the department as “Computer and Information Science” in running text;
@@ -419,6 +447,26 @@ Theoretical Machines:
 - The wordmark is purple with a light shadow; place it on a **cream tile**, not
   directly on the dark footer.
 
+Algorithmology:
+
+- `assets/microscope.png` — microscope mascot cropped from the site logo.
+- `assets/algorithmology-logo.png` — full logo/reference artwork.
+- QR: `assets/qr-algorithmology.*`, pointing to `https://algorithmology.org/`.
+
+Computer Security:
+
+- `assets/security-synapse-logo.svg` — course mark.
+- QR: `assets/qr-securitysynapse.*`, pointing to
+  `https://www.securitysynapse.org/`.
+
+Developer Development:
+
+- `assets/Developer-Development-Horizontal-Logo.svg`,
+  `assets/devdev-wordmark.svg`, and `assets/devdev-logo-favicon.svg` — course
+  marks.
+- QR: `assets/qr-devdev.*`, pointing to
+  `https://www.developerdevelopment.com/`.
+
 QR codes are generated with Segno at error correction level H, with a 2-module
 quiet zone. To regenerate, use the appropriate URL and filenames:
 
@@ -449,7 +497,7 @@ Run the build, then check:
 
 - [ ] `preview.png` shows the entire page; no clipped text, cards, or footer.
 - [ ] The term is bold and easy to find in the top bar, hero kicker, and footer.
-- [ ] The intro is 5 balanced lines and does not touch the sticker.
+- [ ] The intro is balanced and does not touch the sticker.
 - [ ] All 5 badges fit on one row.
 - [ ] 3 cards, 4 bullets each, bottom code/critique lines visible, no overflow.
 - [ ] Toolkit has 2 rows and includes GitHub Copilot, Pi Coding Agent, OpenCode.
@@ -471,6 +519,13 @@ Poster-specific checks:
   sticker, “P vs NP?” and “Q.E.D.” stamps; `3 modules · 14 chapters ·
   3 executable exams`; final exam row; **no instructor name**; QR to
   proofgrammers.com.
+- Algorithmology: microscope mascot, coral band, CS-core sticker; T/Th + time
+  TBA; Friday lab 2:30–4:00; QR to algorithmology.org.
+- Computer Security: Security Synapse mark, zero-trust/attack stamps; M/W/F
+  class + Friday lab as confirmed; QR to securitysynapse.org.
+- Developer Development: editor/commit-graph panel, missing-piece D; M/W/F
+  1:30–2:20 + Wednesday lab 2:30–4:00; “Become one of the developing
+  developers”; QR to developerdevelopment.com.
 
 Useful checks:
 
@@ -505,6 +560,9 @@ the course URL.
    ```bash
    cp -r document-engineering new-course-name
    # or: cp -r proofgrammers new-course-name
+   # or: cp -r algorithmology new-course-name
+   # or: cp -r security-synapse new-course-name
+   # or: cp -r developer-development new-course-name
    ```
 
 3. Rename the PDF/PNG to the new course and term.
@@ -515,7 +573,8 @@ the course URL.
    - title, course code, term, schedule, instructor
    - module cards, toolkit, CTA
    - artwork and QR
-6. Update the course `README.md` and the root `README.md` table.
+6. Update the course `README.md`, the root `README.md` gallery/table/design
+   system, and this file’s poster index.
 7. Run `./new-course-name/build.sh`.
 8. Work through the QA checklist.
 9. Commit the source, assets, final PDF, PNG, and preview.
