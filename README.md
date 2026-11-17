@@ -7,9 +7,9 @@ Each poster is a self-contained HTML/CSS document rendered to a US Letter PDF
 and a 300 DPI PNG. The HTML is the editable source; the PDF and PNG are
 committed so a poster can be printed or shared immediately.
 
-| Document Engineering | Theoretical Machines |
-| --- | --- |
-| ![CMPSC 104 — Document Engineering, Spring 2027](document-engineering/preview.png) | ![CMPSC 204 — Theoretical Machines, Fall 2025](proofgrammers/preview.png) |
+| Document Engineering | Theoretical Machines | Computer Security |
+| --- | --- | --- |
+| ![CMPSC 104 — Document Engineering, Spring 2027](document-engineering/preview.png) | ![CMPSC 204 — Theoretical Machines, Fall 2025](proofgrammers/preview.png) | ![CMPSC 403 — Computer Security, Fall 2026](security-synapse/preview.png) |
 
 ## Posters
 
@@ -17,6 +17,14 @@ committed so a poster can be printed or shared immediately.
 | --- | --- | --- | --- |
 | **CMPSC 104 — Document Engineering** | Spring 2027 | [PDF](document-engineering/CMPSC104-Document-Engineering-Spring2027.pdf) · [PNG](document-engineering/CMPSC104-Document-Engineering-Spring2027.png) | [document-engineering/](document-engineering/) |
 | **CMPSC 204 — Theoretical Machines** | Fall 2025 | [PDF](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.pdf) · [PNG](proofgrammers/CMPSC204-Theoretical-Machines-Fall2025.png) | [proofgrammers/](proofgrammers/) |
+| **CMPSC 403 — Computer Security** | Fall 2026 | [PDF](security-synapse/CMPSC403-Security-Synapse-Fall2026.pdf) · [PNG](security-synapse/CMPSC403-Security-Synapse-Fall2026.png) | [security-synapse/](security-synapse/) |
+
+The Computer Security poster carries the course’s **Security Synapse** brand:
+security fundamentals and threat modeling, cryptography, malware, protocols and
+network attacks, access controls, vulnerabilities, and virtualization, plus
+the 4 security survey projects and the security summit project. It lists the
+Monday/Wednesday/Friday class, the Friday lab, the midterm and final executable
+exams, and the final in-person assessment.
 
 ## Repository layout
 
@@ -33,12 +41,20 @@ course-advertisement-posters/
 │   ├── CMPSC104-Document-Engineering-Spring2027.png
 │   ├── preview.png
 │   └── assets/
-└── proofgrammers/
+├── proofgrammers/
+│   ├── README.md
+│   ├── poster.html
+│   ├── build.sh
+│   ├── CMPSC204-Theoretical-Machines-Fall2025.pdf
+│   ├── CMPSC204-Theoretical-Machines-Fall2025.png
+│   ├── preview.png
+│   └── assets/
+└── security-synapse/
     ├── README.md
     ├── poster.html
     ├── build.sh
-    ├── CMPSC204-Theoretical-Machines-Fall2025.pdf
-    ├── CMPSC204-Theoretical-Machines-Fall2025.png
+    ├── CMPSC403-Security-Synapse-Fall2026.pdf
+    ├── CMPSC403-Security-Synapse-Fall2026.png
     ├── preview.png
     └── assets/
 ```
@@ -60,6 +76,7 @@ committed PDF/PNG pair. Each course chooses its own display face and palette:
 | --- | --- | --- |
 | Document Engineering | Bricolage Grotesque | Plum `#371a45`, violet `#7a4e99`, blue `#00aaff`, gold `#ffc857` |
 | Theoretical Machines | Space Grotesk | Aubergine `#3b1b52`, mauve `#7e5186`, orchid `#c85a9e`, ivory `#f4e6b8` |
+| Computer Security | Chakra Petch | Navy `#14294a`, blue `#2e5799`, cyan `#03a9f4`, orange `#ff5722` |
 
 - **Body:** Inter
 - **Labels / code:** Ubuntu Mono
@@ -76,6 +93,7 @@ Each course folder has its own `build.sh`:
 ```bash
 ./document-engineering/build.sh
 ./proofgrammers/build.sh
+./security-synapse/build.sh
 ```
 
 The script uses headless Chromium and `pdftoppm`. It writes intermediates to
@@ -102,13 +120,14 @@ course folder root.
 
 ## Assets and licensing
 
-- The poster fonts are open-source: Bricolage Grotesque, Space Grotesk, and
-  Inter under the SIL Open Font License 1.1, and Ubuntu Mono under the Ubuntu
-  Font Licence 1.0. License links live in each course’s
+- The poster fonts are open-source: Bricolage Grotesque, Space Grotesk,
+  Chakra Petch, and Inter under the SIL Open Font License 1.1, and Ubuntu Mono
+  under the Ubuntu Font Licence 1.0. License links live in each course’s
   `assets/fonts/README.md`.
 - The astronaut and Prosegrammers wordmark are course branding taken from the
   Prosegrammers course logo. The elephant and Proofgrammers wordmark are course
-  branding taken from the Proofgrammers course logo.
+  branding taken from the Proofgrammers course logo. The Security Synapse logo
+  is course branding taken from securitysynapse.org.
 - QR codes are generated with [Segno](https://segno.readthedocs.io/).
 - No repository-wide license has been added yet; add one before accepting
   outside reuse.
