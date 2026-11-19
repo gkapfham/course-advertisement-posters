@@ -125,7 +125,7 @@ edit it yourself, most text is plain HTML in the corresponding block.
 
 - Use numerals for counts on the poster: **3 modules**, **16 weeks**,
   **4 projects**, **1 summit**.
-- The wordmark is plural: **“Become one of the Security Synapse.”**
+- Footer CTA: **“Learn how to make a”** followed by the **Security Synapse** wordmark.
 - Keep **Fall 2026** bold and visible in the top bar, hero kicker, and footer.
 - The toolkit lists **GitHub Copilot**, **Pi Coding Agent**, and **OpenCode**.
   Gemini CLI is deprecated and should not be added back.

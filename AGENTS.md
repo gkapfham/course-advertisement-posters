@@ -32,7 +32,8 @@ its own display face, palette, and artwork.
 - **Use numerals for counts on posters:** “3 modules,” “12 demos,” “3 projects,”
   “14 chapters” — not “Three modules.”
 - **Plural wordmarks:** use “Become one of the …” with the plural course name,
-  not “Become a …”.
+  not “Become a …”. The Computer Security poster is the exception: its footer
+  reads “Learn how to make a” followed by the Security Synapse wordmark.
 - **Keep the term bold and visible:** it appears in the top-bar pill, the hero
   kicker, and the footer label.
 - **AI tools:** all current posters list GitHub Copilot, **Pi Coding Agent**,
@@ -335,7 +336,8 @@ the authoritative source.
   **3 executable exams**.
 - Use “**Become one of the Prosegrammers**” / “**Become one of the
   Proofgrammers**” / “**Become one of the Algorithmologists**” / “**Become one
-  of the developing developers**” with the plural brand.
+  of the developing developers**” with the plural brand. Computer Security uses
+  “**Learn how to make a**” + the Security Synapse wordmark.
 - Keep the term bold in the top bar, hero kicker, and footer.
 - No emojis. Decorative icons are SVG or the course artwork.
 - Spell the department as “Computer and Information Science” in running text;
@@ -501,7 +503,8 @@ Run the build, then check:
 - [ ] All 5 badges fit on one row.
 - [ ] 3 cards, 4 bullets each, bottom code/critique lines visible, no overflow.
 - [ ] Toolkit has 2 rows and includes GitHub Copilot, Pi Coding Agent, OpenCode.
-- [ ] CTA says “Become one of the” above the plural wordmark.
+- [ ] CTA uses the approved course wording: “Become one of the …” above a
+      plural wordmark, or “Learn how to make a” + Security Synapse for CMPSC 403.
 - [ ] Footer schedule, dates, rooms, and (where applicable) final exam are
       correct.
 - [ ] PDF: 1 page, `612 × 792 pt` (US Letter).
